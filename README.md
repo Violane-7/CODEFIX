@@ -1,237 +1,281 @@
-# AI CODEFIX 2025 🚀
+# AI CODEFIX 2025
 
-**Competitive Coding Event**
-Organized by Dept. of AI&ML & AI&DS
-In collaboration with AI Planet, Agrowvitz, Tensor AI Club
+## The Ultimate AI-Resistant Coding Competition
 
----
-
-## 📅 Event Overview
-
-**Duration**: 3 hours
-**Format**: Individual/Team coding challenges
-**Difficulty Levels**: Easy → Medium → Hard
+*Organized by*: Dept. of AI&ML & AI&DS
+*In Collaboration with*: AI Planet, Agrowvitz, Tensor AI Club
 
 ---
 
-## 🎯 Challenges
+## About The Competition
 
-### 🟢 Easy Challenge: Navigate Namma Bengaluru
-**Time**: ~45 minutes
-**Topic**: Pathfinding Algorithm (A* Search)
-**Task**: Implement A* pathfinding to navigate a 5×10 grid with Bangalore-themed obstacles (traffic lights, cows, pits)
-**Folder**: `./` (root directory)
+AI CODEFIX is a multi-round coding competition that tests true engineering skills in the age of AI. Our challenges are specifically designed to be *AI-resistant* - participants cannot simply paste problems into ChatGPT and expect correct solutions. Success requires genuine understanding, debugging skills, and algorithmic thinking.
 
----
+### Our Philosophy
 
-### 🟡 Medium Challenge: Traffic Router Debugger
-**Time**: ~60 minutes
-**Topic**: Graph Algorithms & Debugging
-**Task**: Debug a broken Dijkstra's variant with 15 bugs across traffic routing implementation
-**Folder**: `hard/`
+- *Skill Over Tools*: We test what participants actually know, not what they can copy
+- *Debug-First Approach*: Most challenges involve fixing buggy code rather than writing from scratch
+- *Real-World Relevance*: Problems mirror actual debugging scenarios engineers face daily
+- *Fair but Challenging*: Partial credit ensures effort is rewarded while excellence stands out
 
 ---
 
-### 🔴 Hard Challenge: KV-Attention Debugger
-**Time**: ~75 minutes
-**Topic**: Deep Learning & Transformers
-**Task**: Debug a broken KV-Cached Multi-Head Attention mechanism used in LLMs
-**Folder**: `hard_2/`
+## Competition Structure
+
+### Round 1: Easy - Wumpus World Navigator
+
+*Domain*: Pathfinding Algorithms
+
+A classic AI problem reimagined. Debug a buggy A* pathfinding agent that must navigate a grid world with environmental hazards.
+
+*What You'll Do:*
+- Fix bugs in an A* search implementation
+- Handle environmental percepts (obstacles, costs, dangers)
+- Ensure the agent finds optimal paths while avoiding hazards
+- Debug pathfinding logic and heuristic calculations
+
+*Skills Tested:*
+- Graph search algorithms (A*)
+- Heuristic design
+- State machine logic
+- Systematic debugging
+
+*Files:*
+- wumpus_world.py - Buggy implementation to fix
+- validator.py - Test runner
+- test_cases.json - Test configurations
 
 ---
 
-## 🚀 Getting Started
+### Round 2: Medium - Database Insights Agent
 
-### Prerequisites
-```bash
-Python 3.8+
-pip install -r requirements.txt
-```
+*Domain*: Data Analysis & Automation
 
-### Choose Your Challenge
+Build an intelligent agent that analyzes any SQLite database and automatically generates a comprehensive report with visualizations, then emails it.
 
-**Easy Challenge:**
-```bash
-python wumpus_world.py
-```
+*What You'll Do:*
+- Connect to and explore an unknown database schema
+- Extract meaningful statistics and patterns
+- Generate professional visualizations (charts, graphs)
+- Compile findings into a formatted report
+- Automate email delivery with attachments
 
-**Medium Challenge:**
-```bash
-cd hard
-python validator.py --file traffic_router.py
-```
+*Skills Tested:*
+- SQL queries and database navigation
+- Data analysis with pandas
+- Data visualization (matplotlib/seaborn)
+- Report generation
+- Email automation (SMTP)
+- Code organization and error handling
 
-**Hard Challenge:**
-```bash
-cd hard_2
-python validator.py --file kv_attention.py
-```
-
----
-
-## 📊 Scoring
-
-- **Easy**: 30 points
-- **Medium**: 35 points
-- **Hard**: 35 points
-- **Total**: 100 points
-
-Partial credit available for incomplete solutions.
+*Key Requirements:*
+- Handle ANY database structure automatically
+- Generate at least 3 meaningful visualizations
+- Professional report formatting (HTML or PDF)
+- Successfully send email with attachments
 
 ---
 
-## 🏆 Winning Strategy
+### Round 3: Hard Challenges
 
-1. **Start with Easy** - Build confidence
-2. **Time management** - Don't spend too long on any one challenge
-3. **Test frequently** - Validate your fixes incrementally
-4. **Read instructions** - Each challenge has detailed README
-5. **Stay calm** - Debugging requires patience
+Three challenging problems designed to test deep understanding. Teams may receive different hard challenges.
 
 ---
 
-## 💡 Tips & Guidelines
+#### Hard Option A: Traffic Router
 
-### Do's ✅
-- Read the entire README for each challenge
-- Test your code frequently
-- Use debugging prints to trace issues
-- Ask for clarification if instructions are unclear
-- Manage your time across all three challenges
+*Domain*: Graph Algorithms
 
-### Don'ts ❌
-- Don't refactor working code unnecessarily
-- Don't skip testing
-- Don't make random changes hoping they work
-- Don't spend all time on one challenge
+Debug a sophisticated Dijkstra-based routing system that accounts for traffic conditions, tolls, and fuel requirements.
 
----
+*What You'll Do:*
+- Fix strategically placed bugs (some are decoys!)
+- Handle bidirectional graph traversal
+- Implement correct cost calculations with traffic penalties
+- Manage fuel station constraints
+- Debug algorithmic edge cases
 
-## ⚠️ Important Notes
-
-1. **Internet Access**: You may use internet resources, documentation, and AI tools
-2. **Original Work**: Your implementations must be your own
-3. **Testing**: Use provided validators to check your solutions
-4. **Submission**: Ensure all code runs without errors
-5. **Code Quality**: Clean, readable code earns bonus points
+*Skills Tested:*
+- Dijkstra's algorithm deep understanding
+- Graph algorithms
+- Edge case handling
+- Distinguishing real bugs from intentional code
 
 ---
 
-## 🎯 Challenge Difficulty Guide
+#### Hard Option B: KV-Cached Multi-Head Attention Debugger
 
-**Easy**: If you know basic pathfinding algorithms
-**Medium**: If you can debug complex algorithmic code
-**Hard**: If you understand deep learning and transformers
+*Domain*: Transformers & Deep Learning
 
-Pick challenges that match your skill level, but don't be afraid to try harder ones!
+Debug a complex multi-head attention implementation with KV-caching for autoregressive generation - the core mechanism behind modern LLMs.
+
+*What You'll Do:*
+- Fix bugs in tensor operations across multiple dimensions
+- Correct mathematical formulas (scaling factors, softmax dimensions)
+- Handle cache management for efficient inference
+- Debug causal masking logic
+
+*Skills Tested:*
+- Transformer architecture understanding
+- Multi-dimensional tensor operations
+- Cache management in autoregressive models
+- Mathematical precision in ML implementations
+- PyTorch tensor debugging
 
 ---
 
-## ❓ FAQs
+#### Hard Option C: NanoGrad Autograd Engine
 
-**Q: Can I use external libraries?**
-A: Yes, for Easy challenge. Medium and Hard challenges should use only the specified dependencies.
+*Domain*: Core Deep Learning
 
-**Q: How much time should I spend on each?**
-A: Easy (45 min), Medium (60 min), Hard (75 min) - but adjust based on your progress.
+Debug a from-scratch automatic differentiation engine - the core technology behind all modern deep learning frameworks like PyTorch and TensorFlow.
 
-**Q: Can I skip a challenge?**
+*What You'll Do:*
+- Fix gradient computation for basic operations (add, multiply, power)
+- Correct topological sorting for backpropagation
+- Debug the chain rule implementation
+- Handle gradient accumulation and zeroing
+- Fix neural network training loop
+
+*Skills Tested:*
+- Automatic differentiation principles
+- Calculus (chain rule, partial derivatives)
+- Computational graph algorithms
+- Backpropagation understanding
+- Core deep learning fundamentals
+
+---
+
+## General Rules
+
+1. *No Solution Sharing*: Do not share solutions with other participants
+2. *AI Tools Allowed*: You may use AI assistants, but challenges are designed to resist them
+3. *Time Limits*: Each round has a strict time limit - manage your time wisely
+4. *Partial Credit*: You don't need to fix everything to score points
+5. *Minimal Fixes*: Only fix bugs - don't refactor or rewrite working code
+6. *Testing*: Use provided validators to check your solutions
+
+---
+
+## Evaluation Criteria
+
+### Automatic Scoring (70%)
+- Test case pass rate
+- Correctness of outputs
+- Edge case handling
+
+### Manual Review (30%)
+- Number and severity of bugs fixed
+- Code quality (no new bugs introduced)
+- Clean, targeted fixes
+- Understanding demonstrated
+
+---
+
+## Getting Started
+
+1. Clone your assigned challenge repository
+2. Read the challenge README thoroughly
+3. Understand the codebase before making changes
+4. Use the validator to test your fixes
+5. Submit before the time limit
+
+---
+
+## Technical Requirements
+
+- Python 3.8+
+- Additional requirements per challenge (see individual requirements.txt)
+
+---
+
+## FAQs
+
+*Q: How many bugs are in each challenge?*
+A: We don't disclose exact numbers. Finding all bugs is part of the challenge.
+
+*Q: Can I use ChatGPT/Claude/Copilot?*
+A: Yes, but these challenges are specifically designed to resist AI tools. Use them strategically, but don't rely on them blindly.
+
+*Q: What if I can't fix all the bugs?*
+A: Partial credit is available. Focus on the most critical bugs first - ones that cause test failures.
+
+*Q: Can I rewrite the entire codebase?*
+A: No. Only fix bugs with minimal, targeted changes. Don't refactor working code.
+
+*Q: How do I know if my fix is correct?*
+A: Run the validator. If tests pass, your fix is likely correct. Some hidden tests exist for final scoring.
+
+*Q: What if the validator crashes?*
+A: Check your Python version and dependencies. Ensure you haven't introduced syntax errors.
+
+*Q: Are there expected outputs provided?*
+A: For most challenges, no. This is intentional - you cannot reverse-engineer solutions from expected outputs.
+
+*Q: What's the difference between hard challenges?*
+A: Each tests different domains (algorithms, ML, core DL) but all are equally challenging and AI-resistant.
+
+*Q: Can I compare my implementation with standard libraries?*
+A: Yes! Comparing outputs with known-correct implementations (like PyTorch for the autograd challenge) is a valid debugging strategy.
+
+*Q: What if I'm stuck?*
+A: Re-read the README, trace through the code manually, add print statements, and test edge cases. Understanding beats guessing.
+
+*Q: Why are there "decoy bugs"?*
+A: To test discernment. Not everything that looks wrong is actually wrong. Part of being a good engineer is knowing what NOT to change.
+
+*Q: Will I lose points for "fixing" decoys?*
+A: You may break working functionality and fail tests. Only fix actual bugs.
+
+*Q: Can I use external libraries?*
+A: For Easy challenge, yes. Medium and Hard challenges should use only the specified dependencies.
+
+*Q: Can I skip a challenge?*
 A: Yes! Focus on challenges where you can score maximum points.
 
-**Q: Are AI tools like ChatGPT allowed?**
-A: Yes, but note that harder challenges are designed to resist AI assistance. Understanding is key.
-
-**Q: What if I get stuck?**
+*Q: What if I get stuck?*
 A: Move to another challenge and come back if time permits. Partial credit is available.
 
-**Q: Can I work in a team?**
-A: Check with organizers for team rules.
+---
+
+## Tips for Success
+
+### Do's
+- Read the entire README for each challenge
+- Test your code frequently with the validator
+- Use debugging prints to trace issues
+- Manage your time across all challenges
+- Understand the code before changing it
+
+### Don'ts
+- Don't refactor working code unnecessarily
+- Don't make random changes hoping they work
+- Don't spend all time on one challenge
+- Don't blindly trust AI suggestions
+- Don't "fix" code that looks suspicious but isn't broken
 
 ---
 
-## 🆘 Need Help?
+## What You'll Learn
 
-- Check the README in each challenge folder
-- Review the Resources section in challenge READMEs
-- Ask organizers for clarification (not solutions!)
-- Use provided test cases to debug
-
----
-
-## 📁 Repository Structure
-
-```
-AI-CODEFIX-2025/
-├── README.md                    # This file
-├── wumpus_world.py             # Easy challenge
-├── requirements.txt
-├── team_config.json            # Your team configuration
-├── hard/                       # Medium challenge
-│   ├── README.md
-│   ├── traffic_router.py
-│   ├── validator.py
-│   └── test_cases.json
-└── hard_2/                     # Hard challenge
-    ├── README.md
-    ├── kv_attention.py
-    ├── validator.py
-    └── test_cases.json
-```
+- *Algorithms: A, Dijkstra's, pathfinding, graph traversal
+- *Debugging*: Systematic bug hunting in complex code
+- *Deep Learning*: Autograd, transformers, attention mechanisms
+- *Problem Solving*: Breaking down complex problems
+- *Discernment*: Knowing what to change and what to leave alone
 
 ---
 
-## 🎓 What You'll Learn
+## Contact & Support
 
-- **Algorithms**: A*, Dijkstra's, pathfinding
-- **Debugging**: Systematic bug hunting in complex code
-- **Deep Learning**: Transformer attention mechanisms
-- **Problem Solving**: Breaking down complex problems
-- **Time Management**: Prioritizing under pressure
+For technical issues during the event, contact the organizing team.
 
 ---
-
-## 🌟 Motivation
 
 > "Debugging is like being a detective in a crime movie where you are also the murderer." - Filipe Fortes
 
-This event tests not just your coding ability, but your:
-- Problem-solving skills
-- Debugging intuition
-- Time management
-- Ability to work under pressure
-- Understanding of algorithms and ML
-
-Remember: **The goal is to learn and have fun!** Even if you don't solve everything, you'll gain valuable debugging experience.
-
 ---
 
-## 🏁 Final Checklist
+*Good luck, and may your code be bug-free!*
 
-Before submitting:
-- [ ] Code runs without errors
-- [ ] Validators pass (or show maximum progress)
-- [ ] Code is readable and commented
-- [ ] Tested edge cases
-- [ ] All required functions implemented
-- [ ] Followed challenge-specific requirements
-
----
-
-## 🎉 Good Luck!
-
-**Remember:**
-- Stay calm and systematic
-- Test frequently
-- Read instructions carefully
-- Manage your time wisely
-- Don't give up - partial credit counts!
-
-**May the best debuggers win!** 🚀
-
----
-
-**Event**: AI CODEFIX 2025
-**Contact**: [Event Organizers]
-**Date**: [Event Date]
-
-*Happy Coding!* 💻✨
+AI CODEFIX 2025 - Where Real Skills Shine
