@@ -1,0 +1,605 @@
+
+        <html>
+        <head>
+          <meta charset="utf-8" />
+          <title>Database Analysis Report - TNMT</title>
+          <style>
+/* Professional CSS styling for report */
+:root{
+  --bg:#f6f9fc;
+  --panel:#ffffff;
+  --accent:#0b5394;
+  --muted:#657786;
+  --pad:18px;
+  --radius:10px;
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
+}
+body{
+  margin:0;
+  padding:40px;
+  font-family:var(--font-sans);
+  background:var(--bg);
+  color:#222;
+}
+.header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:20px;
+}
+.logo{
+  width:72px;
+  height:72px;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--accent),#2a9fd6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:700;
+  font-size:20px;
+}
+.report-title{
+  font-size:28px;
+  margin:0;
+}
+.subtitle{
+  color:var(--muted);
+  margin-top:6px;
+}
+.panel{
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:var(--pad);
+  box-shadow: 0 6px 18px rgba(20,30,60,0.06);
+  margin-bottom:20px;
+}
+.grid{
+  display:grid;
+  grid-template-columns: 1fr 340px;
+  gap:20px;
+  align-items:start;
+}
+.section-title{
+  font-size:18px;
+  color:var(--accent);
+  margin-bottom:8px;
+}
+.kv{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  border-bottom:1px solid #f0f3f7;
+}
+.kv strong{color:#111}
+.table{
+  width:100%;
+  border-collapse:collapse;
+}
+.table th, .table td{
+  text-align:left;
+  padding:8px;
+  border-bottom:1px solid #f0f3f7;
+  font-size:13px;
+}
+.chart{
+  text-align:center;
+  margin-bottom:18px;
+}
+.insight{
+  background:linear-gradient(90deg,#eef7ff,#ffffff);
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:8px;
+  font-size:14px;
+}
+.footer{
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
+  margin-top:30px;
+}
+@media (max-width:900px){
+  .grid{ grid-template-columns: 1fr; }
+}
+</style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="logo">DB</div>
+            <div>
+              <h1 class="report-title">Database Analysis Report</h1>
+              <div class="subtitle">Database: sales_agent.db &nbsp;•&nbsp; Generated: 2025-11-27 10:07:58 UTC</div>
+            </div>
+          </div>
+          <div class="grid">
+            <div>
+              <div class="panel">
+                <div class="section-title">Executive Summary</div>
+                <p>This report provides schema discovery, table statistics, data quality checks, automatic insights, and visualizations for your SQLite database. Use the insights and recommendations below to prioritize data cleaning, deduplication, and schema improvements.</p>
+              </div>
+        
+
+            <div class="panel">
+              <div class="section-title">Table: dbo_D_Customer</div>
+              <div class="kv"><strong>Rows</strong><span>2632</span></div>
+              <div class="kv"><strong>Columns</strong><span>73</span></div>
+              <div style="margin-top:10px;">
+                <table class="table">
+                  <thead><tr><th>Column</th><th>Type</th><th>Non-null</th><th>Nulls</th><th>Unique</th></tr></thead>
+                  <tbody>
+            <tr><td>Customer Key</td><td>int64</td><td>2632</td><td>0</td><td>2632</td></tr><tr><td>Company Code</td><td>object</td><td>2631</td><td>1</td><td>3</td></tr><tr><td>Source Code</td><td>object</td><td>2631</td><td>1</td><td>1</td></tr><tr><td>Customer Number</td><td>float64</td><td>2631</td><td>1</td><td>2631</td></tr><tr><td>Bill-to Customer Key</td><td>int64</td><td>2632</td><td>0</td><td>1</td></tr><tr><td>Customer Category Hrchy Key</td><td>int64</td><td>2632</td><td>0</td><td>19</td></tr><tr><td>Customer Geography Hrchy Key</td><td>int64</td><td>2632</td><td>0</td><td>99</td></tr><tr><td>Default Customer Ship-to Key</td><td>int64</td><td>2632</td><td>0</td><td>2632</td></tr><tr><td>Sales Organization Key</td><td>int64</td><td>2632</td><td>0</td><td>21</td></tr><tr><td>Customer Name</td><td>object</td><td>2631</td><td>1</td><td>2631</td></tr><tr><td>Customer Status</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Origin Date</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Customer Address 1</td><td>object</td><td>2631</td><td>1</td><td>2631</td></tr><tr><td>Customer Address 2</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Customer Address 3</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Customer City</td><td>object</td><td>2631</td><td>1</td><td>1420</td></tr><tr><td>Customer State/Prov Code</td><td>object</td><td>2619</td><td>13</td><td>92</td></tr><tr><td>Customer State/Prov</td><td>object</td><td>2631</td><td>1</td><td>98</td></tr><tr><td>Customer Postal Code</td><td>object</td><td>1761</td><td>871</td><td>1648</td></tr><tr><td>Customer Country Code</td><td>object</td><td>2631</td><td>1</td><td>3</td></tr><tr><td>Customer Country</td><td>object</td><td>2631</td><td>1</td><td>3</td></tr><tr><td>Bill-to Customer Number</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Customer Type Code</td><td>object</td><td>2631</td><td>1</td><td>1</td></tr><tr><td>Customer Type Desc</td><td>object</td><td>2631</td><td>1</td><td>1</td></tr><tr><td>Customer Category Hrchy Code</td><td>float64</td><td>2631</td><td>1</td><td>6</td></tr><tr><td>Customer Geography Hrchy Code</td><td>object</td><td>2631</td><td>1</td><td>98</td></tr><tr><td>Market Code</td><td>float64</td><td>2631</td><td>1</td><td>6</td></tr><tr><td>Market Desc</td><td>object</td><td>2631</td><td>1</td><td>6</td></tr><tr><td>Industry Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Industry Desc</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Salesperson Code</td><td>float64</td><td>2631</td><td>1</td><td>20</td></tr><tr><td>Salesperson Name</td><td>object</td><td>2631</td><td>1</td><td>20</td></tr><tr><td>Responsibility Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Responsibility Name</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Sales Territory Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Sales Territory</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Payment Terms Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Payment Terms</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Payment Terms Group</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Price Group Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Price Group</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Discount Group Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Discount Group</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Business Posting Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Business Posting Desc</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Customer Posting Desc</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Credit Status</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Credit Limit Amount</td><td>float64</td><td>2632</td><td>0</td><td>4</td></tr><tr><td>Attribute 1 Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Attribute 1 Name</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Attribute 2 Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Attribute 2 Name</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Attribute 3 Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Attribute 3 Name</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Attribute 4 Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Attribute 4 Name</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Attribute 5 Code</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Attribute 5 Name</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Loyalty Status</td><td>object</td><td>2631</td><td>1</td><td>6</td></tr><tr><td>Year Acquired</td><td>float64</td><td>2487</td><td>145</td><td>6</td></tr><tr><td>High Volume Customer Count</td><td>int64</td><td>2632</td><td>0</td><td>2</td></tr><tr><td>Recency Band</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Recency Band Sort</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Frequency Band</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Frequency Band Sort</td><td>object</td><td>0</td><td>2632</td><td>0</td></tr><tr><td>Monetary Band</td><td>object</td><td>2631</td><td>1</td><td>5</td></tr><tr><td>Monetary Band Sort</td><td>int64</td><td>2632</td><td>0</td><td>6</td></tr><tr><td>Relationship Length Band</td><td>object</td><td>2631</td><td>1</td><td>5</td></tr><tr><td>Relationship Length Band Sort</td><td>int64</td><td>2632</td><td>0</td><td>6</td></tr><tr><td>Sales Activity Flag</td><td>int64</td><td>2632</td><td>0</td><td>1</td></tr><tr><td>Deleted Flag</td><td>int64</td><td>2632</td><td>0</td><td>1</td></tr><tr><td>Customer Loyalty Rule Key</td><td>float64</td><td>2631</td><td>1</td><td>3</td></tr><tr><td>Source Log Key</td><td>int64</td><td>2632</td><td>0</td><td>2</td></tr></tbody></table></div></div>
+
+            <div class="panel">
+              <div class="section-title">Table: dbo_D_Customer_Category_Hierarchy</div>
+              <div class="kv"><strong>Rows</strong><span>19</span></div>
+              <div class="kv"><strong>Columns</strong><span>16</span></div>
+              <div style="margin-top:10px;">
+                <table class="table">
+                  <thead><tr><th>Column</th><th>Type</th><th>Non-null</th><th>Nulls</th><th>Unique</th></tr></thead>
+                  <tbody>
+            <tr><td>Customer Category Hrchy Key</td><td>int64</td><td>19</td><td>0</td><td>19</td></tr><tr><td>Company Code</td><td>object</td><td>18</td><td>1</td><td>3</td></tr><tr><td>Source Code</td><td>object</td><td>18</td><td>1</td><td>1</td></tr><tr><td>Customer Category Hrchy Code</td><td>float64</td><td>18</td><td>1</td><td>6</td></tr><tr><td>Customer Category Hrchy L1 Code</td><td>float64</td><td>18</td><td>1</td><td>6</td></tr><tr><td>Customer Category Hrchy L1 Name</td><td>object</td><td>18</td><td>1</td><td>6</td></tr><tr><td>Customer Category Hrchy L2 Code</td><td>object</td><td>0</td><td>19</td><td>0</td></tr><tr><td>Customer Category Hrchy L2 Name</td><td>object</td><td>0</td><td>19</td><td>0</td></tr><tr><td>Customer Category Hrchy L3 Code</td><td>object</td><td>0</td><td>19</td><td>0</td></tr><tr><td>Customer Category Hrchy L3 Name</td><td>object</td><td>0</td><td>19</td><td>0</td></tr><tr><td>Customer Category Hrchy L4 Code</td><td>object</td><td>0</td><td>19</td><td>0</td></tr><tr><td>Customer Category Hrchy L4 Name</td><td>object</td><td>0</td><td>19</td><td>0</td></tr><tr><td>Customer Category Hrchy L5 Code</td><td>object</td><td>0</td><td>19</td><td>0</td></tr><tr><td>Customer Category Hrchy L5 Name</td><td>object</td><td>0</td><td>19</td><td>0</td></tr><tr><td>Deleted Flag</td><td>int64</td><td>19</td><td>0</td><td>1</td></tr><tr><td>Source Log Key</td><td>int64</td><td>19</td><td>0</td><td>1</td></tr></tbody></table></div></div>
+
+            <div class="panel">
+              <div class="section-title">Table: dbo_D_Customer_Geography_Hierarchy</div>
+              <div class="kv"><strong>Rows</strong><span>99</span></div>
+              <div class="kv"><strong>Columns</strong><span>16</span></div>
+              <div style="margin-top:10px;">
+                <table class="table">
+                  <thead><tr><th>Column</th><th>Type</th><th>Non-null</th><th>Nulls</th><th>Unique</th></tr></thead>
+                  <tbody>
+            <tr><td>Customer Geography Hrchy Key</td><td>int64</td><td>99</td><td>0</td><td>99</td></tr><tr><td>Company Code</td><td>object</td><td>98</td><td>1</td><td>3</td></tr><tr><td>Source Code</td><td>object</td><td>98</td><td>1</td><td>1</td></tr><tr><td>Customer Geography Hrchy Code</td><td>object</td><td>98</td><td>1</td><td>98</td></tr><tr><td>Customer Geography Hrchy L1 Code</td><td>object</td><td>98</td><td>1</td><td>3</td></tr><tr><td>Customer Geography Hrchy L1 Name</td><td>object</td><td>98</td><td>1</td><td>3</td></tr><tr><td>Customer Geography Hrchy L2 Code</td><td>object</td><td>98</td><td>1</td><td>13</td></tr><tr><td>Customer Geography Hrchy L2 Name</td><td>object</td><td>98</td><td>1</td><td>13</td></tr><tr><td>Customer Geography Hrchy L3 Code</td><td>object</td><td>98</td><td>1</td><td>98</td></tr><tr><td>Customer Geography Hrchy L3 Name</td><td>object</td><td>98</td><td>1</td><td>98</td></tr><tr><td>Customer Geography Hrchy L4 Code</td><td>object</td><td>0</td><td>99</td><td>0</td></tr><tr><td>Customer Geography Hrchy L4 Name</td><td>object</td><td>0</td><td>99</td><td>0</td></tr><tr><td>Customer Geography Hrchy L5 Code</td><td>object</td><td>0</td><td>99</td><td>0</td></tr><tr><td>Customer Geography Hrchy L5 Name</td><td>object</td><td>0</td><td>99</td><td>0</td></tr><tr><td>Deleted Flag</td><td>int64</td><td>99</td><td>0</td><td>1</td></tr><tr><td>Source Log Key</td><td>int64</td><td>99</td><td>0</td><td>1</td></tr></tbody></table></div></div>
+
+            <div class="panel">
+              <div class="section-title">Table: dbo_D_Item</div>
+              <div class="kv"><strong>Rows</strong><span>463</span></div>
+              <div class="kv"><strong>Columns</strong><span>62</span></div>
+              <div style="margin-top:10px;">
+                <table class="table">
+                  <thead><tr><th>Column</th><th>Type</th><th>Non-null</th><th>Nulls</th><th>Unique</th></tr></thead>
+                  <tbody>
+            <tr><td>Item Key</td><td>int64</td><td>463</td><td>0</td><td>463</td></tr><tr><td>Company Code</td><td>object</td><td>462</td><td>1</td><td>3</td></tr><tr><td>Source Code</td><td>object</td><td>462</td><td>1</td><td>1</td></tr><tr><td>Item Type</td><td>object</td><td>462</td><td>1</td><td>1</td></tr><tr><td>Item Number</td><td>object</td><td>462</td><td>1</td><td>154</td></tr><tr><td>Buyer Key</td><td>int64</td><td>463</td><td>0</td><td>1</td></tr><tr><td>Item Category Hrchy Key</td><td>int64</td><td>463</td><td>0</td><td>55</td></tr><tr><td>Manufacturer Key</td><td>int64</td><td>463</td><td>0</td><td>1</td></tr><tr><td>Purchaser Key</td><td>int64</td><td>463</td><td>0</td><td>1</td></tr><tr><td>Vendor Key</td><td>int64</td><td>463</td><td>0</td><td>1</td></tr><tr><td>Item Desc</td><td>object</td><td>462</td><td>1</td><td>154</td></tr><tr><td>Item Status</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Origin Date</td><td>object</td><td>463</td><td>0</td><td>3</td></tr><tr><td>Item Type Code</td><td>object</td><td>462</td><td>1</td><td>1</td></tr><tr><td>Item Type Desc</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Item Category Hrchy Code</td><td>object</td><td>462</td><td>1</td><td>54</td></tr><tr><td>Item Category Code</td><td>float64</td><td>462</td><td>1</td><td>3</td></tr><tr><td>Item Category Desc</td><td>object</td><td>462</td><td>1</td><td>3</td></tr><tr><td>Item Subcategory Code</td><td>object</td><td>462</td><td>1</td><td>9</td></tr><tr><td>Item Subcategory Desc</td><td>object</td><td>462</td><td>1</td><td>9</td></tr><tr><td>Vendor Number</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Vendor Item Number</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Manufacturer Number</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Purchaser Code</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Buyer Code</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Planner Code</td><td>object</td><td>462</td><td>1</td><td>3</td></tr><tr><td>Planner Name</td><td>object</td><td>462</td><td>1</td><td>3</td></tr><tr><td>ABC Code</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Inventory Posting Code</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Inventory Posting Desc</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Discount Code</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Discount Desc</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Unit of Measure</td><td>object</td><td>462</td><td>1</td><td>1</td></tr><tr><td>Purch Unit of Measure</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Sales Unit of Measure</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Unit Price</td><td>float64</td><td>463</td><td>0</td><td>48</td></tr><tr><td>Unit Cost</td><td>float64</td><td>463</td><td>0</td><td>54</td></tr><tr><td>Standard Unit Cost</td><td>float64</td><td>1</td><td>462</td><td>1</td></tr><tr><td>Last Unit Cost</td><td>float64</td><td>1</td><td>462</td><td>1</td></tr><tr><td>Gross Weight</td><td>float64</td><td>463</td><td>0</td><td>26</td></tr><tr><td>Replenishment Method</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Reorder Point</td><td>float64</td><td>1</td><td>462</td><td>1</td></tr><tr><td>Reorder Quantity</td><td>float64</td><td>1</td><td>462</td><td>1</td></tr><tr><td>Safety Stock Quantity</td><td>float64</td><td>1</td><td>462</td><td>1</td></tr><tr><td>Purch Lead Time</td><td>float64</td><td>1</td><td>462</td><td>1</td></tr><tr><td>Mfg Lead Time</td><td>float64</td><td>1</td><td>462</td><td>1</td></tr><tr><td>New Item Count</td><td>int64</td><td>463</td><td>0</td><td>2</td></tr><tr><td>Attribute 1 Code</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Attribute 1 Name</td><td>object</td><td>204</td><td>259</td><td>3</td></tr><tr><td>Attribute 2 Code</td><td>object</td><td>303</td><td>160</td><td>6</td></tr><tr><td>Attribute 2 Name</td><td>object</td><td>303</td><td>160</td><td>6</td></tr><tr><td>Attribute 3 Code</td><td>object</td><td>390</td><td>73</td><td>11</td></tr><tr><td>Attribute 3 Name</td><td>object</td><td>390</td><td>73</td><td>11</td></tr><tr><td>Attribute 4 Code</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Attribute 4 Name</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Attribute 5 Code</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Attribute 5 Name</td><td>object</td><td>0</td><td>463</td><td>0</td></tr><tr><td>Purch Activity Flag</td><td>int64</td><td>463</td><td>0</td><td>2</td></tr><tr><td>Inv Activity Flag</td><td>int64</td><td>463</td><td>0</td><td>2</td></tr><tr><td>Sales Activity Flag</td><td>int64</td><td>463</td><td>0</td><td>1</td></tr><tr><td>Deleted Flag</td><td>int64</td><td>463</td><td>0</td><td>1</td></tr><tr><td>Source Log Key</td><td>int64</td><td>463</td><td>0</td><td>1</td></tr></tbody></table></div></div>
+
+            <div class="panel">
+              <div class="section-title">Table: dbo_D_Sales_Organization</div>
+              <div class="kv"><strong>Rows</strong><span>21</span></div>
+              <div class="kv"><strong>Columns</strong><span>14</span></div>
+              <div style="margin-top:10px;">
+                <table class="table">
+                  <thead><tr><th>Column</th><th>Type</th><th>Non-null</th><th>Nulls</th><th>Unique</th></tr></thead>
+                  <tbody>
+            <tr><td>Sales Organization Key</td><td>int64</td><td>21</td><td>0</td><td>21</td></tr><tr><td>Company Code</td><td>object</td><td>20</td><td>1</td><td>3</td></tr><tr><td>Source Code</td><td>object</td><td>20</td><td>1</td><td>1</td></tr><tr><td>Salesperson Code</td><td>float64</td><td>20</td><td>1</td><td>20</td></tr><tr><td>Salesperson Name</td><td>object</td><td>20</td><td>1</td><td>20</td></tr><tr><td>Sales Org Hrchy L1 Name</td><td>object</td><td>20</td><td>1</td><td>3</td></tr><tr><td>Sales Org Hrchy L2 Name</td><td>object</td><td>20</td><td>1</td><td>15</td></tr><tr><td>Sales Org Hrchy L3 Name</td><td>object</td><td>0</td><td>21</td><td>0</td></tr><tr><td>Email Address</td><td>object</td><td>0</td><td>21</td><td>0</td></tr><tr><td>Sales Manager Code</td><td>object</td><td>0</td><td>21</td><td>0</td></tr><tr><td>Sales Manager Name</td><td>object</td><td>0</td><td>21</td><td>0</td></tr><tr><td>Sales Activity Flag</td><td>int64</td><td>21</td><td>0</td><td>1</td></tr><tr><td>Deleted Flag</td><td>int64</td><td>21</td><td>0</td><td>1</td></tr><tr><td>Source Log Key</td><td>int64</td><td>21</td><td>0</td><td>1</td></tr></tbody></table></div></div>
+
+            <div class="panel">
+              <div class="section-title">Table: dbo_F_AR_Detail</div>
+              <div class="kv"><strong>Rows</strong><span>520089</span></div>
+              <div class="kv"><strong>Columns</strong><span>45</span></div>
+              <div style="margin-top:10px;">
+                <table class="table">
+                  <thead><tr><th>Column</th><th>Type</th><th>Non-null</th><th>Nulls</th><th>Unique</th></tr></thead>
+                  <tbody>
+            <tr><td>AR Detail Key</td><td>int64</td><td>520089</td><td>0</td><td>520089</td></tr><tr><td>Company Code</td><td>object</td><td>520089</td><td>0</td><td>3</td></tr><tr><td>Source Code</td><td>object</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Record Type</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>AR Detail Id</td><td>int64</td><td>520089</td><td>0</td><td>520089</td></tr><tr><td>AR Header Key</td><td>int64</td><td>520089</td><td>0</td><td>252939</td></tr><tr><td>Business Unit Key</td><td>int64</td><td>520089</td><td>0</td><td>7</td></tr><tr><td>Company Key</td><td>int64</td><td>520089</td><td>0</td><td>3</td></tr><tr><td>Currency Key</td><td>int64</td><td>520089</td><td>0</td><td>3</td></tr><tr><td>Customer Key</td><td>int64</td><td>520089</td><td>0</td><td>1855</td></tr><tr><td>Customer Category Hrchy Key</td><td>int64</td><td>520089</td><td>0</td><td>18</td></tr><tr><td>Customer Geography Hrchy Key</td><td>int64</td><td>520089</td><td>0</td><td>95</td></tr><tr><td>Division Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Facility Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Posting Date Key</td><td>int64</td><td>520089</td><td>0</td><td>791</td></tr><tr><td>Sales Organization Key</td><td>int64</td><td>520089</td><td>0</td><td>20</td></tr><tr><td>Txn Date Key</td><td>int64</td><td>520089</td><td>0</td><td>791</td></tr><tr><td>Txn Sales Organization Key</td><td>int64</td><td>520089</td><td>0</td><td>20</td></tr><tr><td>AR Header Id</td><td>int64</td><td>520089</td><td>0</td><td>252939</td></tr><tr><td>Txn Date</td><td>object</td><td>520089</td><td>0</td><td>791</td></tr><tr><td>Posting Date</td><td>object</td><td>520089</td><td>0</td><td>791</td></tr><tr><td>Document Source</td><td>object</td><td>510109</td><td>9980</td><td>8</td></tr><tr><td>Document Type</td><td>object</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Document Number</td><td>object</td><td>520089</td><td>0</td><td>322667</td></tr><tr><td>Transaction Type</td><td>object</td><td>511094</td><td>8995</td><td>3</td></tr><tr><td>Txn Amount</td><td>float64</td><td>520089</td><td>0</td><td>201134</td></tr><tr><td>Txn Amount (TCY)</td><td>float64</td><td>520089</td><td>0</td><td>201134</td></tr><tr><td>Debit Amount</td><td>float64</td><td>520089</td><td>0</td><td>99580</td></tr><tr><td>Credit Amount</td><td>float64</td><td>520089</td><td>0</td><td>101742</td></tr><tr><td>Age Band Days</td><td>int64</td><td>520089</td><td>0</td><td>812</td></tr><tr><td>Age Band</td><td>object</td><td>520089</td><td>0</td><td>7</td></tr><tr><td>Age Band Sort</td><td>int64</td><td>520089</td><td>0</td><td>7</td></tr><tr><td>Deleted Flag</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Source Log Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Analytics Log Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Dimension 01 Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Dimension 02 Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Dimension 03 Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Dimension 04 Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Dimension 05 Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Dimension 06 Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Dimension 07 Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Dimension 08 Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Dimension 09 Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr><tr><td>Dimension 10 Key</td><td>int64</td><td>520089</td><td>0</td><td>1</td></tr></tbody></table></div></div>
+
+            <div class="panel">
+              <div class="section-title">Table: dbo_F_Sales_Goal</div>
+              <div class="kv"><strong>Rows</strong><span>26350</span></div>
+              <div class="kv"><strong>Columns</strong><span>32</span></div>
+              <div style="margin-top:10px;">
+                <table class="table">
+                  <thead><tr><th>Column</th><th>Type</th><th>Non-null</th><th>Nulls</th><th>Unique</th></tr></thead>
+                  <tbody>
+            <tr><td>Sales Goal Key</td><td>int64</td><td>26350</td><td>0</td><td>26350</td></tr><tr><td>Company Code</td><td>object</td><td>26350</td><td>0</td><td>3</td></tr><tr><td>Source Code</td><td>object</td><td>26350</td><td>0</td><td>1</td></tr><tr><td>Dataset</td><td>object</td><td>26350</td><td>0</td><td>2</td></tr><tr><td>Sales Goal Id</td><td>int64</td><td>26350</td><td>0</td><td>25018</td></tr><tr><td>Business Unit Key</td><td>int64</td><td>26350</td><td>0</td><td>8</td></tr><tr><td>Company Key</td><td>int64</td><td>26350</td><td>0</td><td>3</td></tr><tr><td>Currency Key</td><td>int64</td><td>26350</td><td>0</td><td>3</td></tr><tr><td>Customer Key</td><td>int64</td><td>26350</td><td>0</td><td>1</td></tr><tr><td>Customer Category Hrchy Key</td><td>int64</td><td>26350</td><td>0</td><td>19</td></tr><tr><td>Customer Geography Hrchy Key</td><td>int64</td><td>26350</td><td>0</td><td>1</td></tr><tr><td>Division Key</td><td>int64</td><td>26350</td><td>0</td><td>1</td></tr><tr><td>Facility Key</td><td>int64</td><td>26350</td><td>0</td><td>1</td></tr><tr><td>Item Key</td><td>int64</td><td>26350</td><td>0</td><td>76</td></tr><tr><td>Item Category Hrchy Key</td><td>int64</td><td>26350</td><td>0</td><td>54</td></tr><tr><td>Goal Date Key</td><td>int64</td><td>26350</td><td>0</td><td>24</td></tr><tr><td>Sales Organization Key</td><td>int64</td><td>26350</td><td>0</td><td>21</td></tr><tr><td>Division Code</td><td>object</td><td>26350</td><td>0</td><td>1</td></tr><tr><td>Business Unit Code</td><td>object</td><td>25018</td><td>1332</td><td>7</td></tr><tr><td>Facility Code</td><td>object</td><td>0</td><td>26350</td><td>0</td></tr><tr><td>Salesperson Code</td><td>float64</td><td>25018</td><td>1332</td><td>20</td></tr><tr><td>Customer Category Hrchy Code</td><td>float64</td><td>25018</td><td>1332</td><td>6</td></tr><tr><td>Customer Number</td><td>object</td><td>0</td><td>26350</td><td>0</td></tr><tr><td>Item Category Hrchy Code</td><td>object</td><td>26350</td><td>0</td><td>54</td></tr><tr><td>Line Type</td><td>object</td><td>1332</td><td>25018</td><td>1</td></tr><tr><td>Item Number</td><td>object</td><td>1332</td><td>25018</td><td>25</td></tr><tr><td>Goal Date</td><td>object</td><td>26350</td><td>0</td><td>24</td></tr><tr><td>Sales Goal Quantity</td><td>float64</td><td>1332</td><td>25018</td><td>30</td></tr><tr><td>Sales Goal Amount</td><td>float64</td><td>26350</td><td>0</td><td>6625</td></tr><tr><td>Profit Goal Amount</td><td>object</td><td>0</td><td>26350</td><td>0</td></tr><tr><td>Deleted Flag</td><td>int64</td><td>26350</td><td>0</td><td>1</td></tr><tr><td>Source Log Key</td><td>int64</td><td>26350</td><td>0</td><td>1</td></tr></tbody></table></div></div>
+
+            <div class="panel">
+              <div class="section-title">Table: dbo_F_Sales_Order</div>
+              <div class="kv"><strong>Rows</strong><span>80226</span></div>
+              <div class="kv"><strong>Columns</strong><span>83</span></div>
+              <div style="margin-top:10px;">
+                <table class="table">
+                  <thead><tr><th>Column</th><th>Type</th><th>Non-null</th><th>Nulls</th><th>Unique</th></tr></thead>
+                  <tbody>
+            <tr><td>Sales Order Key</td><td>int64</td><td>80226</td><td>0</td><td>80226</td></tr><tr><td>Company Code</td><td>object</td><td>80226</td><td>0</td><td>3</td></tr><tr><td>Source Code</td><td>object</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Record Type</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Sales Order Document</td><td>object</td><td>80226</td><td>0</td><td>80226</td></tr><tr><td>Business Unit Key</td><td>int64</td><td>80226</td><td>0</td><td>7</td></tr><tr><td>Company Key</td><td>int64</td><td>80226</td><td>0</td><td>3</td></tr><tr><td>Currency Key</td><td>int64</td><td>80226</td><td>0</td><td>3</td></tr><tr><td>Customer Key</td><td>int64</td><td>80226</td><td>0</td><td>2555</td></tr><tr><td>Customer Category Hrchy Key</td><td>int64</td><td>80226</td><td>0</td><td>18</td></tr><tr><td>Customer Geography Hrchy Key</td><td>int64</td><td>80226</td><td>0</td><td>98</td></tr><tr><td>Customer Ship-to Key</td><td>int64</td><td>80226</td><td>0</td><td>2555</td></tr><tr><td>Division Key</td><td>int64</td><td>80226</td><td>0</td><td>3</td></tr><tr><td>Facility Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Item Key</td><td>int64</td><td>80226</td><td>0</td><td>462</td></tr><tr><td>Item Category Hrchy Key</td><td>int64</td><td>80226</td><td>0</td><td>54</td></tr><tr><td>Item Variant Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Location Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Order Date Key</td><td>int64</td><td>80226</td><td>0</td><td>1305</td></tr><tr><td>Posting Date Key</td><td>int64</td><td>80226</td><td>0</td><td>1305</td></tr><tr><td>Sales Event Key</td><td>int64</td><td>80226</td><td>0</td><td>16</td></tr><tr><td>Sales Order Header Key</td><td>int64</td><td>80226</td><td>0</td><td>32052</td></tr><tr><td>Sales Organization Key</td><td>int64</td><td>80226</td><td>0</td><td>20</td></tr><tr><td>Service Item Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Txn Sales Organization Key</td><td>int64</td><td>80226</td><td>0</td><td>20</td></tr><tr><td>Warehouse Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Sales Order Type</td><td>object</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Sales Order Number</td><td>object</td><td>80226</td><td>0</td><td>32052</td></tr><tr><td>Sales Order Line Number</td><td>int64</td><td>80226</td><td>0</td><td>4</td></tr><tr><td>Sales Order Header Document</td><td>object</td><td>80226</td><td>0</td><td>32052</td></tr><tr><td>Order Date</td><td>object</td><td>80226</td><td>0</td><td>1305</td></tr><tr><td>Posting Date</td><td>object</td><td>80226</td><td>0</td><td>1305</td></tr><tr><td>Posting Time</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Warehouse Code</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Location Code</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Line Type</td><td>object</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Item Number</td><td>object</td><td>80226</td><td>0</td><td>154</td></tr><tr><td>Revision Code</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Item Variant Code</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Service Item Number</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Dimension Set Id</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Order Status</td><td>object</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Customer Posting Group</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Business Posting Group Code</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Business Posting Group</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Product Posting Group Code</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Product Posting Group</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Target Ship Date</td><td>object</td><td>80226</td><td>0</td><td>1305</td></tr><tr><td>Requested Ship Date</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Promised Ship Date</td><td>object</td><td>80226</td><td>0</td><td>1305</td></tr><tr><td>Sales Event Code</td><td>object</td><td>3353</td><td>76873</td><td>5</td></tr><tr><td>Unit of Measure</td><td>object</td><td>0</td><td>80226</td><td>0</td></tr><tr><td>Order Quantity</td><td>float64</td><td>80226</td><td>0</td><td>10</td></tr><tr><td>Order Amount</td><td>float64</td><td>80226</td><td>0</td><td>4202</td></tr><tr><td>Order Amount (TCY)</td><td>float64</td><td>80226</td><td>0</td><td>4202</td></tr><tr><td>Return Quantity</td><td>float64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Return Amount</td><td>float64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Return Amount (TCY)</td><td>float64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Net Order Quantity</td><td>float64</td><td>80226</td><td>0</td><td>10</td></tr><tr><td>Net Order Amount</td><td>float64</td><td>80226</td><td>0</td><td>4202</td></tr><tr><td>Net Order Amount (TCY)</td><td>float64</td><td>80226</td><td>0</td><td>4202</td></tr><tr><td>Cost Amount</td><td>float64</td><td>80226</td><td>0</td><td>247</td></tr><tr><td>Gross Profit Amount</td><td>float64</td><td>80226</td><td>0</td><td>4414</td></tr><tr><td>Discount Amount</td><td>float64</td><td>80226</td><td>0</td><td>3152</td></tr><tr><td>Discount Amount (TCY)</td><td>float64</td><td>80226</td><td>0</td><td>3152</td></tr><tr><td>Discount Reason Code</td><td>object</td><td>27389</td><td>52837</td><td>7</td></tr><tr><td>Discount Reason</td><td>object</td><td>27389</td><td>52837</td><td>7</td></tr><tr><td>Number Order Lines</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Number Return Lines</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Deleted Flag</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Excluded Flag</td><td>int64</td><td>80226</td><td>0</td><td>2</td></tr><tr><td>Source Log Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Analytics Log Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Dimension 01 Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Dimension 02 Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Dimension 03 Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Dimension 04 Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Dimension 05 Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Dimension 06 Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Dimension 07 Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Dimension 08 Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Dimension 09 Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr><tr><td>Dimension 10 Key</td><td>int64</td><td>80226</td><td>0</td><td>1</td></tr></tbody></table></div></div>
+
+            <div class="panel">
+              <div class="section-title">Table: dbo_F_Sales_Pipeline_Snapshot</div>
+              <div class="kv"><strong>Rows</strong><span>31476</span></div>
+              <div class="kv"><strong>Columns</strong><span>34</span></div>
+              <div style="margin-top:10px;">
+                <table class="table">
+                  <thead><tr><th>Column</th><th>Type</th><th>Non-null</th><th>Nulls</th><th>Unique</th></tr></thead>
+                  <tbody>
+            <tr><td>Pipeline Snapshot Key</td><td>int64</td><td>31476</td><td>0</td><td>31476</td></tr><tr><td>Business Unit Key</td><td>int64</td><td>31476</td><td>0</td><td>7</td></tr><tr><td>Company Key</td><td>int64</td><td>31476</td><td>0</td><td>3</td></tr><tr><td>Customer Key</td><td>int64</td><td>31476</td><td>0</td><td>1623</td></tr><tr><td>Customer Category Hrchy Key</td><td>int64</td><td>31476</td><td>0</td><td>18</td></tr><tr><td>Customer Geography Hrchy Key</td><td>int64</td><td>31476</td><td>0</td><td>98</td></tr><tr><td>Division Key</td><td>int64</td><td>31476</td><td>0</td><td>3</td></tr><tr><td>Facility Key</td><td>int64</td><td>31476</td><td>0</td><td>1</td></tr><tr><td>Sales Organization Key</td><td>int64</td><td>31476</td><td>0</td><td>20</td></tr><tr><td>Snapshot Date Key</td><td>int64</td><td>31476</td><td>0</td><td>51</td></tr><tr><td>Snapshot Date</td><td>object</td><td>31476</td><td>0</td><td>51</td></tr><tr><td>Warehouse Key</td><td>int64</td><td>31476</td><td>0</td><td>1</td></tr><tr><td>Expiration Status</td><td>object</td><td>31476</td><td>0</td><td>2</td></tr><tr><td>Class Band</td><td>object</td><td>31476</td><td>0</td><td>3</td></tr><tr><td>Class Band Sort</td><td>object</td><td>0</td><td>31476</td><td>0</td></tr><tr><td>Stage Band</td><td>object</td><td>31476</td><td>0</td><td>4</td></tr><tr><td>Stage Band Sort</td><td>int64</td><td>31476</td><td>0</td><td>4</td></tr><tr><td>Priority Band</td><td>object</td><td>31476</td><td>0</td><td>3</td></tr><tr><td>Priority Band Sort</td><td>int64</td><td>31476</td><td>0</td><td>3</td></tr><tr><td>Size Band</td><td>object</td><td>31476</td><td>0</td><td>4</td></tr><tr><td>Size Band Sort</td><td>int64</td><td>31476</td><td>0</td><td>4</td></tr><tr><td>Probability Band</td><td>object</td><td>31476</td><td>0</td><td>3</td></tr><tr><td>Probability Band Sort</td><td>int64</td><td>31476</td><td>0</td><td>3</td></tr><tr><td>Expected Close Band</td><td>object</td><td>31476</td><td>0</td><td>4</td></tr><tr><td>Expected Close Band Sort</td><td>int64</td><td>31476</td><td>0</td><td>4</td></tr><tr><td>Expected Delivery Band</td><td>object</td><td>0</td><td>31476</td><td>0</td></tr><tr><td>Expected Delivery Band Sort</td><td>object</td><td>0</td><td>31476</td><td>0</td></tr><tr><td>Quote Quantity</td><td>float64</td><td>31476</td><td>0</td><td>26</td></tr><tr><td>Quote Amount</td><td>float64</td><td>31476</td><td>0</td><td>1716</td></tr><tr><td>Gross Profit Amount</td><td>float64</td><td>31476</td><td>0</td><td>1676</td></tr><tr><td>Discount Amount</td><td>float64</td><td>31476</td><td>0</td><td>918</td></tr><tr><td>Number Quote Lines</td><td>int64</td><td>31476</td><td>0</td><td>2</td></tr><tr><td>Deleted Flag</td><td>int64</td><td>31476</td><td>0</td><td>1</td></tr><tr><td>Analytics Log Key</td><td>object</td><td>0</td><td>31476</td><td>0</td></tr></tbody></table></div></div>
+
+            <div class="panel">
+              <div class="section-title">Table: dbo_F_Sales_Transaction</div>
+              <div class="kv"><strong>Rows</strong><span>81423</span></div>
+              <div class="kv"><strong>Columns</strong><span>101</span></div>
+              <div style="margin-top:10px;">
+                <table class="table">
+                  <thead><tr><th>Column</th><th>Type</th><th>Non-null</th><th>Nulls</th><th>Unique</th></tr></thead>
+                  <tbody>
+            <tr><td>Sales Txn Key</td><td>int64</td><td>81423</td><td>0</td><td>81423</td></tr><tr><td>Company Code</td><td>object</td><td>81423</td><td>0</td><td>3</td></tr><tr><td>Source Code</td><td>object</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Record Type</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Sales Txn Document</td><td>object</td><td>81423</td><td>0</td><td>81423</td></tr><tr><td>Business Unit Key</td><td>int64</td><td>81423</td><td>0</td><td>7</td></tr><tr><td>Company Key</td><td>int64</td><td>81423</td><td>0</td><td>3</td></tr><tr><td>Currency Key</td><td>int64</td><td>81423</td><td>0</td><td>3</td></tr><tr><td>Customer Key</td><td>int64</td><td>81423</td><td>0</td><td>2547</td></tr><tr><td>Customer Category Hrchy Key</td><td>int64</td><td>81423</td><td>0</td><td>18</td></tr><tr><td>Customer Geography Hrchy Key</td><td>int64</td><td>81423</td><td>0</td><td>98</td></tr><tr><td>Customer Ship-to Key</td><td>int64</td><td>81423</td><td>0</td><td>2547</td></tr><tr><td>Division Key</td><td>int64</td><td>81423</td><td>0</td><td>3</td></tr><tr><td>Facility Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Item Key</td><td>int64</td><td>81423</td><td>0</td><td>462</td></tr><tr><td>Item Category Hrchy Key</td><td>int64</td><td>81423</td><td>0</td><td>54</td></tr><tr><td>Item Variant Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Location Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Posting Date Key</td><td>int64</td><td>81423</td><td>0</td><td>1291</td></tr><tr><td>Sales Event Key</td><td>int64</td><td>81423</td><td>0</td><td>16</td></tr><tr><td>Sales Txn Header Key</td><td>int64</td><td>81423</td><td>0</td><td>33882</td></tr><tr><td>Sales Organization Key</td><td>int64</td><td>81423</td><td>0</td><td>20</td></tr><tr><td>Service Item Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Txn Date Key</td><td>int64</td><td>81423</td><td>0</td><td>1291</td></tr><tr><td>Txn Sales Organization Key</td><td>int64</td><td>81423</td><td>0</td><td>20</td></tr><tr><td>Warehouse Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Sales Txn Type</td><td>object</td><td>81423</td><td>0</td><td>2</td></tr><tr><td>Sales Txn Number</td><td>object</td><td>81423</td><td>0</td><td>33882</td></tr><tr><td>Sales Txn Line Number</td><td>int64</td><td>81423</td><td>0</td><td>4</td></tr><tr><td>Sales Txn Header Document</td><td>object</td><td>81423</td><td>0</td><td>33882</td></tr><tr><td>Txn Date</td><td>object</td><td>81423</td><td>0</td><td>1291</td></tr><tr><td>Posting Date</td><td>object</td><td>81423</td><td>0</td><td>1291</td></tr><tr><td>Posting Time</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Warehouse Code</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Location Code</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Business Posting Group Code</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Business Posting Group</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Product Posting Group Code</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Product Posting Group</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Line Type</td><td>object</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Item Number</td><td>object</td><td>81423</td><td>0</td><td>154</td></tr><tr><td>Revision Code</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Item Variant Code</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Service Item Number</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Dimension Set Id</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Sales Event Code</td><td>object</td><td>3386</td><td>78037</td><td>5</td></tr><tr><td>Unit of Measure</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Sales Quantity</td><td>float64</td><td>81423</td><td>0</td><td>11</td></tr><tr><td>Sales Amount</td><td>float64</td><td>81423</td><td>0</td><td>4188</td></tr><tr><td>Sales Amount (TCY)</td><td>float64</td><td>81423</td><td>0</td><td>4188</td></tr><tr><td>Sales Order Document</td><td>object</td><td>81423</td><td>0</td><td>31662</td></tr><tr><td>Credit Quantity</td><td>float64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Credit Amount</td><td>float64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Credit Amount (TCY)</td><td>float64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Return Quantity</td><td>float64</td><td>81423</td><td>0</td><td>11</td></tr><tr><td>Return Amount</td><td>float64</td><td>81423</td><td>0</td><td>948</td></tr><tr><td>Return Amount (TCY)</td><td>float64</td><td>81423</td><td>0</td><td>948</td></tr><tr><td>Return Reason Code</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Return Reason</td><td>object</td><td>2221</td><td>79202</td><td>5</td></tr><tr><td>Return Order Document</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Net Sales Quantity</td><td>float64</td><td>81423</td><td>0</td><td>20</td></tr><tr><td>Net Sales Amount</td><td>float64</td><td>81423</td><td>0</td><td>5134</td></tr><tr><td>Net Sales Amount (TCY)</td><td>float64</td><td>81423</td><td>0</td><td>5134</td></tr><tr><td>Cost Amount</td><td>float64</td><td>81423</td><td>0</td><td>248</td></tr><tr><td>Gross Profit Amount</td><td>float64</td><td>81423</td><td>0</td><td>5346</td></tr><tr><td>Discount Amount</td><td>float64</td><td>81423</td><td>0</td><td>3139</td></tr><tr><td>Discount Amount (TCY)</td><td>float64</td><td>81423</td><td>0</td><td>3139</td></tr><tr><td>Discount Reason Code</td><td>object</td><td>27716</td><td>53707</td><td>7</td></tr><tr><td>Discount Reason</td><td>object</td><td>27716</td><td>53707</td><td>7</td></tr><tr><td>Other Charges Amount</td><td>float64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Other Charges Amount (TCY)</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Tax 1 Code</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Tax 1 Amount</td><td>float64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Tax 2 Code</td><td>object</td><td>0</td><td>81423</td><td>0</td></tr><tr><td>Tax 2 Amount</td><td>float64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Number Sales Lines</td><td>int64</td><td>81423</td><td>0</td><td>2</td></tr><tr><td>Number Credit Lines</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Number Return Lines</td><td>int64</td><td>81423</td><td>0</td><td>2</td></tr><tr><td>Number Discount Lines</td><td>int64</td><td>81423</td><td>0</td><td>2</td></tr><tr><td>Deleted Flag</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Excluded Flag</td><td>int64</td><td>81423</td><td>0</td><td>2</td></tr><tr><td>Source Log Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Dimension 01 Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Dimension 02 Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Dimension 03 Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Dimension 04 Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Dimension 05 Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Dimension 06 Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Dimension 07 Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Dimension 08 Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Dimension 09 Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>Dimension 10 Key</td><td>int64</td><td>81423</td><td>0</td><td>1</td></tr><tr><td>gpb Sales Amount</td><td>float64</td><td>81423</td><td>0</td><td>2043</td></tr><tr><td>gpb Return Amount</td><td>float64</td><td>81423</td><td>0</td><td>866</td></tr><tr><td>gpb Net Sales Amount</td><td>float64</td><td>81423</td><td>0</td><td>2907</td></tr><tr><td>gpb Cost Amount</td><td>float64</td><td>81423</td><td>0</td><td>849</td></tr><tr><td>gpb Gross Profit Amount</td><td>float64</td><td>81423</td><td>0</td><td>3227</td></tr><tr><td>gpb Discount Amount</td><td>float64</td><td>81423</td><td>0</td><td>2266</td></tr><tr><td>gpb Discount%</td><td>float64</td><td>81423</td><td>0</td><td>6</td></tr><tr><td>gpb Sales Quantity</td><td>float64</td><td>81423</td><td>0</td><td>12</td></tr><tr><td>gpb Net Sales Quantity</td><td>float64</td><td>81423</td><td>0</td><td>21</td></tr></tbody></table></div></div>
+<div class="panel"><div class="section-title">Visualizations</div>
+<div class="chart"><h4>Chart 1</h4><img src="chart1.png" alt="chart1" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 8px 20px rgba(20,30,60,0.06);"/></div>
+<div class="chart"><h4>Chart 2</h4><img src="chart2.png" alt="chart2" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 8px 20px rgba(20,30,60,0.06);"/></div>
+<div class="chart"><h4>Chart 3</h4><img src="chart3.png" alt="chart3" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 8px 20px rgba(20,30,60,0.06);"/></div>
+<div class="chart"><h4>Chart 4</h4><img src="chart4.png" alt="chart4" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 8px 20px rgba(20,30,60,0.06);"/></div>
+<div class="chart"><h4>Chart 5</h4><img src="chart5.png" alt="chart5" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 8px 20px rgba(20,30,60,0.06);"/></div>
+</div>
+
+           </div> <!-- left column -->
+           <div> <!-- right column -->
+        
+<div class="panel"><div class="section-title">Key Insights & Recommendations</div>
+<div><h4 style="margin-bottom:8px;">dbo_D_Customer</h4>
+<div class="insight">In table 'dbo_D_Customer', columns ['Payment Terms Code', 'Industry Desc', 'Responsibility Name', 'Sales Territory Code', 'Sales Territory', 'Payment Terms', 'Payment Terms Group', 'Price Group Code', 'Price Group', 'Discount Group Code', 'Discount Group', 'Business Posting Code', 'Business Posting Desc', 'Customer Posting Desc', 'Credit Status', 'Attribute 1 Code', 'Attribute 1 Name', 'Attribute 2 Code', 'Attribute 2 Name', 'Attribute 3 Code', 'Attribute 3 Name', 'Attribute 4 Code', 'Attribute 4 Name', 'Attribute 5 Code', 'Attribute 5 Name', 'Recency Band', 'Recency Band Sort', 'Frequency Band Sort', 'Responsibility Code', 'Industry Code', 'Bill-to Customer Number', 'Customer Status', 'Origin Date', 'Customer Address 2', 'Customer Address 3', 'Frequency Band', 'Customer Postal Code'] have high missingness (>30%). Consider data collection or imputation.</div>
+<div class="insight">Column 'Source Code' in 'dbo_D_Customer' has only one unique value (['Demo']).</div>
+<div class="insight">Column 'Bill-to Customer Key' in 'dbo_D_Customer' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Customer Status' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Origin Date' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Customer Address 2' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Customer Address 3' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Bill-to Customer Number' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Customer Type Code' in 'dbo_D_Customer' has only one unique value (['B']).</div>
+<div class="insight">Column 'Customer Type Desc' in 'dbo_D_Customer' has only one unique value (['Business']).</div>
+<div class="insight">Column 'Industry Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Industry Desc' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Responsibility Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Responsibility Name' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Sales Territory Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Sales Territory' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Payment Terms Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Payment Terms' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Payment Terms Group' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Price Group Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Price Group' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Discount Group Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Discount Group' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Business Posting Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Business Posting Desc' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Customer Posting Desc' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Credit Status' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Attribute 1 Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Attribute 1 Name' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Attribute 2 Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Attribute 2 Name' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Attribute 3 Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Attribute 3 Name' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Attribute 4 Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Attribute 4 Name' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Attribute 5 Code' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Attribute 5 Name' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Recency Band' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Recency Band Sort' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Frequency Band' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Frequency Band Sort' in 'dbo_D_Customer' is entirely empty.</div>
+<div class="insight">Column 'Sales Activity Flag' in 'dbo_D_Customer' has only one unique value ([1]).</div>
+<div class="insight">Column 'Deleted Flag' in 'dbo_D_Customer' has only one unique value ([0]).</div>
+<div class="insight">Numeric column 'Credit Limit Amount' in 'dbo_D_Customer' has 929 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Year Acquired' in 'dbo_D_Customer' has 1 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'High Volume Customer Count' in 'dbo_D_Customer' has 86 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Monetary Band Sort' in 'dbo_D_Customer' has 143 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Relationship Length Band Sort' in 'dbo_D_Customer' has 653 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Source Log Key' in 'dbo_D_Customer' has 1 potential outliers (IQR method).</div>
+<div class="insight">Strong correlations detected in 'dbo_D_Customer': Customer Key-Default Customer Ship-to Key (1.00), Customer Number-Salesperson Code (1.00), Customer Number-Customer Loyalty Rule Key (1.00), Customer Category Hrchy Code-Market Code (1.00), Salesperson Code-Customer Loyalty Rule Key (1.00), Year Acquired-Source Log Key (1.00). Consider multicollinearity handling.</div>
+<div class="insight">Numeric column 'Year Acquired' in 'dbo_D_Customer' is highly skewed (skew=-49.79). Consider transformation.</div>
+<div class="insight">Numeric column 'High Volume Customer Count' in 'dbo_D_Customer' is highly skewed (skew=5.26). Consider transformation.</div>
+<div class="insight">Numeric column 'Source Log Key' in 'dbo_D_Customer' is highly skewed (skew=51.30). Consider transformation.</div>
+</div>
+<div><h4 style="margin-bottom:8px;">dbo_D_Customer_Category_Hierarchy</h4>
+<div class="insight">In table 'dbo_D_Customer_Category_Hierarchy', columns ['Customer Category Hrchy L2 Code', 'Customer Category Hrchy L2 Name', 'Customer Category Hrchy L3 Code', 'Customer Category Hrchy L3 Name', 'Customer Category Hrchy L4 Code', 'Customer Category Hrchy L4 Name', 'Customer Category Hrchy L5 Code', 'Customer Category Hrchy L5 Name'] have high missingness (>30%). Consider data collection or imputation.</div>
+<div class="insight">Column 'Source Code' in 'dbo_D_Customer_Category_Hierarchy' has only one unique value (['Demo']).</div>
+<div class="insight">Column 'Customer Category Hrchy L2 Code' in 'dbo_D_Customer_Category_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Customer Category Hrchy L2 Name' in 'dbo_D_Customer_Category_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Customer Category Hrchy L3 Code' in 'dbo_D_Customer_Category_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Customer Category Hrchy L3 Name' in 'dbo_D_Customer_Category_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Customer Category Hrchy L4 Code' in 'dbo_D_Customer_Category_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Customer Category Hrchy L4 Name' in 'dbo_D_Customer_Category_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Customer Category Hrchy L5 Code' in 'dbo_D_Customer_Category_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Customer Category Hrchy L5 Name' in 'dbo_D_Customer_Category_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Deleted Flag' in 'dbo_D_Customer_Category_Hierarchy' has only one unique value ([0]).</div>
+<div class="insight">Column 'Source Log Key' in 'dbo_D_Customer_Category_Hierarchy' has only one unique value ([0]).</div>
+<div class="insight">Strong correlations detected in 'dbo_D_Customer_Category_Hierarchy': Customer Category Hrchy Code-Customer Category Hrchy L1 Code (1.00). Consider multicollinearity handling.</div>
+</div>
+<div><h4 style="margin-bottom:8px;">dbo_D_Customer_Geography_Hierarchy</h4>
+<div class="insight">In table 'dbo_D_Customer_Geography_Hierarchy', columns ['Customer Geography Hrchy L4 Code', 'Customer Geography Hrchy L4 Name', 'Customer Geography Hrchy L5 Code', 'Customer Geography Hrchy L5 Name'] have high missingness (>30%). Consider data collection or imputation.</div>
+<div class="insight">Column 'Source Code' in 'dbo_D_Customer_Geography_Hierarchy' has only one unique value (['Demo']).</div>
+<div class="insight">Column 'Customer Geography Hrchy L4 Code' in 'dbo_D_Customer_Geography_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Customer Geography Hrchy L4 Name' in 'dbo_D_Customer_Geography_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Customer Geography Hrchy L5 Code' in 'dbo_D_Customer_Geography_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Customer Geography Hrchy L5 Name' in 'dbo_D_Customer_Geography_Hierarchy' is entirely empty.</div>
+<div class="insight">Column 'Deleted Flag' in 'dbo_D_Customer_Geography_Hierarchy' has only one unique value ([0]).</div>
+<div class="insight">Column 'Source Log Key' in 'dbo_D_Customer_Geography_Hierarchy' has only one unique value ([0]).</div>
+</div>
+<div><h4 style="margin-bottom:8px;">dbo_D_Item</h4>
+<div class="insight">In table 'dbo_D_Item', columns ['Discount Desc', 'Inventory Posting Code', 'Inventory Posting Desc', 'Discount Code', 'Buyer Code', 'Purchaser Code', 'Manufacturer Number', 'Vendor Item Number', 'Vendor Number', 'Purch Unit of Measure', 'Sales Unit of Measure', 'Attribute 4 Name', 'Attribute 4 Code', 'Item Type Desc', 'Attribute 5 Code', 'Item Status', 'Replenishment Method', 'Attribute 5 Name', 'Attribute 1 Code', 'ABC Code', 'Last Unit Cost', 'Standard Unit Cost', 'Reorder Point', 'Reorder Quantity', 'Safety Stock Quantity', 'Purch Lead Time', 'Mfg Lead Time', 'Attribute 1 Name', 'Attribute 2 Code', 'Attribute 2 Name'] have high missingness (>30%). Consider data collection or imputation.</div>
+<div class="insight">Column 'Source Code' in 'dbo_D_Item' has only one unique value (['Demo']).</div>
+<div class="insight">Column 'Item Type' in 'dbo_D_Item' has only one unique value (['Item']).</div>
+<div class="insight">Column 'Buyer Key' in 'dbo_D_Item' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Manufacturer Key' in 'dbo_D_Item' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Purchaser Key' in 'dbo_D_Item' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Vendor Key' in 'dbo_D_Item' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Item Status' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Item Type Code' in 'dbo_D_Item' has only one unique value (['FG']).</div>
+<div class="insight">Column 'Item Type Desc' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Vendor Number' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Vendor Item Number' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Manufacturer Number' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Purchaser Code' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Buyer Code' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'ABC Code' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Inventory Posting Code' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Inventory Posting Desc' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Discount Code' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Discount Desc' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Unit of Measure' in 'dbo_D_Item' has only one unique value (['EA']).</div>
+<div class="insight">Column 'Purch Unit of Measure' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Sales Unit of Measure' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Standard Unit Cost' in 'dbo_D_Item' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Last Unit Cost' in 'dbo_D_Item' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Replenishment Method' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Reorder Point' in 'dbo_D_Item' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Reorder Quantity' in 'dbo_D_Item' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Safety Stock Quantity' in 'dbo_D_Item' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Purch Lead Time' in 'dbo_D_Item' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Mfg Lead Time' in 'dbo_D_Item' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Attribute 1 Code' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Attribute 4 Code' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Attribute 4 Name' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Attribute 5 Code' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Attribute 5 Name' in 'dbo_D_Item' is entirely empty.</div>
+<div class="insight">Column 'Sales Activity Flag' in 'dbo_D_Item' has only one unique value ([1]).</div>
+<div class="insight">Column 'Deleted Flag' in 'dbo_D_Item' has only one unique value ([0]).</div>
+<div class="insight">Column 'Source Log Key' in 'dbo_D_Item' has only one unique value ([0]).</div>
+<div class="insight">Numeric column 'Unit Cost' in 'dbo_D_Item' has 30 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Gross Weight' in 'dbo_D_Item' has 9 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'New Item Count' in 'dbo_D_Item' has 75 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Purch Activity Flag' in 'dbo_D_Item' has 1 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Inv Activity Flag' in 'dbo_D_Item' has 1 potential outliers (IQR method).</div>
+<div class="insight">Strong correlations detected in 'dbo_D_Item': Unit Price-Unit Cost (0.99), Purch Activity Flag-Inv Activity Flag (1.00). Consider multicollinearity handling.</div>
+<div class="insight">Numeric column 'Purch Activity Flag' in 'dbo_D_Item' is highly skewed (skew=21.52). Consider transformation.</div>
+<div class="insight">Numeric column 'Inv Activity Flag' in 'dbo_D_Item' is highly skewed (skew=21.52). Consider transformation.</div>
+</div>
+<div><h4 style="margin-bottom:8px;">dbo_D_Sales_Organization</h4>
+<div class="insight">In table 'dbo_D_Sales_Organization', columns ['Sales Org Hrchy L3 Name', 'Email Address', 'Sales Manager Code', 'Sales Manager Name'] have high missingness (>30%). Consider data collection or imputation.</div>
+<div class="insight">Column 'Source Code' in 'dbo_D_Sales_Organization' has only one unique value (['Demo']).</div>
+<div class="insight">Column 'Sales Org Hrchy L3 Name' in 'dbo_D_Sales_Organization' is entirely empty.</div>
+<div class="insight">Column 'Email Address' in 'dbo_D_Sales_Organization' is entirely empty.</div>
+<div class="insight">Column 'Sales Manager Code' in 'dbo_D_Sales_Organization' is entirely empty.</div>
+<div class="insight">Column 'Sales Manager Name' in 'dbo_D_Sales_Organization' is entirely empty.</div>
+<div class="insight">Column 'Sales Activity Flag' in 'dbo_D_Sales_Organization' has only one unique value ([1]).</div>
+<div class="insight">Column 'Deleted Flag' in 'dbo_D_Sales_Organization' has only one unique value ([0]).</div>
+<div class="insight">Column 'Source Log Key' in 'dbo_D_Sales_Organization' has only one unique value ([0]).</div>
+</div>
+<div><h4 style="margin-bottom:8px;">dbo_F_AR_Detail</h4>
+<div class="insight">Column 'Source Code' in 'dbo_F_AR_Detail' has only one unique value (['Demo']).</div>
+<div class="insight">Column 'Record Type' in 'dbo_F_AR_Detail' has only one unique value ([0]).</div>
+<div class="insight">Column 'Division Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Facility Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Document Type' in 'dbo_F_AR_Detail' has only one unique value (['Invoice']).</div>
+<div class="insight">Column 'Deleted Flag' in 'dbo_F_AR_Detail' has only one unique value ([0]).</div>
+<div class="insight">Column 'Source Log Key' in 'dbo_F_AR_Detail' has only one unique value ([2]).</div>
+<div class="insight">Column 'Analytics Log Key' in 'dbo_F_AR_Detail' has only one unique value ([0]).</div>
+<div class="insight">Column 'Dimension 01 Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 02 Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 03 Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 04 Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 05 Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 06 Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 07 Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 08 Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 09 Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 10 Key' in 'dbo_F_AR_Detail' has only one unique value ([-1]).</div>
+<div class="insight">Numeric column 'Txn Amount' in 'dbo_F_AR_Detail' has 111678 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Txn Amount (TCY)' in 'dbo_F_AR_Detail' has 111678 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Debit Amount' in 'dbo_F_AR_Detail' has 79772 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Credit Amount' in 'dbo_F_AR_Detail' has 78008 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Age Band Days' in 'dbo_F_AR_Detail' has 91416 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Age Band Sort' in 'dbo_F_AR_Detail' has 13437 potential outliers (IQR method).</div>
+<div class="insight">Strong correlations detected in 'dbo_F_AR_Detail': AR Detail Key-AR Detail Id (0.89), AR Detail Key-AR Header Id (0.89), AR Detail Id-Company Key (0.96), AR Detail Id-Currency Key (0.96), AR Detail Id-AR Header Id (0.99), Company Key-Currency Key (1.00), Company Key-AR Header Id (0.98), Currency Key-AR Header Id (0.98), Customer Key-Customer Category Hrchy Key (0.87), Customer Category Hrchy Key-Sales Organization Key (0.85), Customer Category Hrchy Key-Txn Sales Organization Key (0.85), Posting Date Key-Txn Date Key (1.00), Sales Organization Key-Txn Sales Organization Key (1.00), Txn Amount-Txn Amount (TCY) (1.00). Consider multicollinearity handling.</div>
+<div class="insight">Numeric column 'Txn Amount' in 'dbo_F_AR_Detail' is highly skewed (skew=2.03). Consider transformation.</div>
+<div class="insight">Numeric column 'Txn Amount (TCY)' in 'dbo_F_AR_Detail' is highly skewed (skew=2.03). Consider transformation.</div>
+<div class="insight">Numeric column 'Debit Amount' in 'dbo_F_AR_Detail' is highly skewed (skew=26.42). Consider transformation.</div>
+<div class="insight">Numeric column 'Credit Amount' in 'dbo_F_AR_Detail' is highly skewed (skew=24.27). Consider transformation.</div>
+<div class="insight">Numeric column 'Age Band Days' in 'dbo_F_AR_Detail' is highly skewed (skew=2.64). Consider transformation.</div>
+</div>
+<div><h4 style="margin-bottom:8px;">dbo_F_Sales_Goal</h4>
+<div class="insight">In table 'dbo_F_Sales_Goal', columns ['Profit Goal Amount', 'Customer Number', 'Facility Code', 'Sales Goal Quantity', 'Item Number', 'Line Type'] have high missingness (>30%). Consider data collection or imputation.</div>
+<div class="insight">Column 'Source Code' in 'dbo_F_Sales_Goal' has only one unique value (['Demo']).</div>
+<div class="insight">Column 'Customer Key' in 'dbo_F_Sales_Goal' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Customer Geography Hrchy Key' in 'dbo_F_Sales_Goal' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Division Key' in 'dbo_F_Sales_Goal' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Facility Key' in 'dbo_F_Sales_Goal' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Division Code' in 'dbo_F_Sales_Goal' has only one unique value (['WHLS']).</div>
+<div class="insight">Column 'Facility Code' in 'dbo_F_Sales_Goal' is entirely empty.</div>
+<div class="insight">Column 'Customer Number' in 'dbo_F_Sales_Goal' is entirely empty.</div>
+<div class="insight">Column 'Line Type' in 'dbo_F_Sales_Goal' has only one unique value (['Item']).</div>
+<div class="insight">Column 'Profit Goal Amount' in 'dbo_F_Sales_Goal' is entirely empty.</div>
+<div class="insight">Column 'Deleted Flag' in 'dbo_F_Sales_Goal' has only one unique value ([0]).</div>
+<div class="insight">Column 'Source Log Key' in 'dbo_F_Sales_Goal' has only one unique value ([0]).</div>
+<div class="insight">Numeric column 'Item Key' in 'dbo_F_Sales_Goal' has 1332 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Sales Goal Quantity' in 'dbo_F_Sales_Goal' has 64 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Sales Goal Amount' in 'dbo_F_Sales_Goal' has 1986 potential outliers (IQR method).</div>
+<div class="insight">Strong correlations detected in 'dbo_F_Sales_Goal': Sales Goal Id-Salesperson Code (0.87), Business Unit Key-Customer Category Hrchy Key (0.89), Business Unit Key-Sales Organization Key (0.90), Company Key-Currency Key (1.00), Company Key-Salesperson Code (1.00), Currency Key-Salesperson Code (1.00), Customer Category Hrchy Key-Sales Organization Key (0.90), Sales Goal Quantity-Sales Goal Amount (0.87). Consider multicollinearity handling.</div>
+<div class="insight">Numeric column 'Item Key' in 'dbo_F_Sales_Goal' is highly skewed (skew=5.35). Consider transformation.</div>
+<div class="insight">Numeric column 'Sales Goal Quantity' in 'dbo_F_Sales_Goal' is highly skewed (skew=2.72). Consider transformation.</div>
+<div class="insight">Numeric column 'Sales Goal Amount' in 'dbo_F_Sales_Goal' is highly skewed (skew=4.73). Consider transformation.</div>
+</div>
+<div><h4 style="margin-bottom:8px;">dbo_F_Sales_Order</h4>
+<div class="insight">In table 'dbo_F_Sales_Order', columns ['Product Posting Group', 'Service Item Number', 'Posting Time', 'Warehouse Code', 'Location Code', 'Revision Code', 'Item Variant Code', 'Unit of Measure', 'Requested Ship Date', 'Customer Posting Group', 'Business Posting Group Code', 'Business Posting Group', 'Product Posting Group Code', 'Sales Event Code', 'Discount Reason', 'Discount Reason Code'] have high missingness (>30%). Consider data collection or imputation.</div>
+<div class="insight">Column 'Source Code' in 'dbo_F_Sales_Order' has only one unique value (['Demo']).</div>
+<div class="insight">Column 'Record Type' in 'dbo_F_Sales_Order' has only one unique value ([0]).</div>
+<div class="insight">Column 'Sales Order Document' in 'dbo_F_Sales_Order' appears to be a high-cardinality text field (unique ratio >90%).</div>
+<div class="insight">Column 'Facility Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Item Variant Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Location Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Service Item Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Warehouse Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Sales Order Type' in 'dbo_F_Sales_Order' has only one unique value (['Sales Order']).</div>
+<div class="insight">Column 'Posting Time' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Warehouse Code' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Location Code' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Line Type' in 'dbo_F_Sales_Order' has only one unique value (['Item']).</div>
+<div class="insight">Column 'Revision Code' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Item Variant Code' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Service Item Number' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Dimension Set Id' in 'dbo_F_Sales_Order' has only one unique value ([0]).</div>
+<div class="insight">Column 'Order Status' in 'dbo_F_Sales_Order' has only one unique value (['Open']).</div>
+<div class="insight">Column 'Customer Posting Group' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Business Posting Group Code' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Business Posting Group' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Product Posting Group Code' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Product Posting Group' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Requested Ship Date' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Unit of Measure' in 'dbo_F_Sales_Order' is entirely empty.</div>
+<div class="insight">Column 'Return Quantity' in 'dbo_F_Sales_Order' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Return Amount' in 'dbo_F_Sales_Order' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Return Amount (TCY)' in 'dbo_F_Sales_Order' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Number Order Lines' in 'dbo_F_Sales_Order' has only one unique value ([1]).</div>
+<div class="insight">Column 'Number Return Lines' in 'dbo_F_Sales_Order' has only one unique value ([0]).</div>
+<div class="insight">Column 'Deleted Flag' in 'dbo_F_Sales_Order' has only one unique value ([0]).</div>
+<div class="insight">Column 'Source Log Key' in 'dbo_F_Sales_Order' has only one unique value ([0]).</div>
+<div class="insight">Column 'Analytics Log Key' in 'dbo_F_Sales_Order' has only one unique value ([0]).</div>
+<div class="insight">Column 'Dimension 01 Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 02 Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 03 Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 04 Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 05 Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 06 Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 07 Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 08 Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 09 Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 10 Key' in 'dbo_F_Sales_Order' has only one unique value ([-1]).</div>
+<div class="insight">Numeric column 'Sales Event Key' in 'dbo_F_Sales_Order' has 3353 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Order Quantity' in 'dbo_F_Sales_Order' has 645 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Order Amount' in 'dbo_F_Sales_Order' has 4159 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Order Amount (TCY)' in 'dbo_F_Sales_Order' has 4159 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Net Order Quantity' in 'dbo_F_Sales_Order' has 645 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Net Order Amount' in 'dbo_F_Sales_Order' has 4159 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Net Order Amount (TCY)' in 'dbo_F_Sales_Order' has 4159 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Cost Amount' in 'dbo_F_Sales_Order' has 5361 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Gross Profit Amount' in 'dbo_F_Sales_Order' has 3700 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Discount Amount' in 'dbo_F_Sales_Order' has 12841 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Discount Amount (TCY)' in 'dbo_F_Sales_Order' has 12841 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Excluded Flag' in 'dbo_F_Sales_Order' has 8302 potential outliers (IQR method).</div>
+<div class="insight">Strong correlations detected in 'dbo_F_Sales_Order': Sales Order Key-Sales Order Header Key (1.00), Business Unit Key-Customer Category Hrchy Key (0.86), Business Unit Key-Item Key (0.86), Business Unit Key-Sales Organization Key (0.87), Business Unit Key-Txn Sales Organization Key (0.87), Company Key-Currency Key (1.00), Company Key-Division Key (1.00), Currency Key-Division Key (1.00), Customer Key-Customer Category Hrchy Key (0.88), Customer Key-Customer Ship-to Key (1.00), Customer Key-Item Key (0.87), Customer Category Hrchy Key-Customer Geography Hrchy Key (0.85), Customer Category Hrchy Key-Customer Ship-to Key (0.88), Customer Category Hrchy Key-Item Key (0.90), Customer Category Hrchy Key-Sales Organization Key (0.87), Customer Category Hrchy Key-Txn Sales Organization Key (0.87), Customer Geography Hrchy Key-Item Key (0.85), Customer Ship-to Key-Item Key (0.87), Item Key-Sales Organization Key (0.87), Item Key-Txn Sales Organization Key (0.87), Order Date Key-Posting Date Key (1.00), Sales Organization Key-Txn Sales Organization Key (1.00), Order Quantity-Net Order Quantity (1.00), Order Amount-Order Amount (TCY) (1.00), Order Amount-Net Order Amount (1.00), Order Amount-Net Order Amount (TCY) (1.00), Order Amount-Cost Amount (0.99), Order Amount-Gross Profit Amount (0.98), Order Amount (TCY)-Net Order Amount (1.00), Order Amount (TCY)-Net Order Amount (TCY) (1.00), Order Amount (TCY)-Cost Amount (0.99), Order Amount (TCY)-Gross Profit Amount (0.98), Net Order Amount-Net Order Amount (TCY) (1.00), Net Order Amount-Cost Amount (0.99), Net Order Amount-Gross Profit Amount (0.98), Net Order Amount (TCY)-Cost Amount (0.99), Net Order Amount (TCY)-Gross Profit Amount (0.98), Cost Amount-Gross Profit Amount (0.94), Discount Amount-Discount Amount (TCY) (1.00). Consider multicollinearity handling.</div>
+<div class="insight">Numeric column 'Sales Event Key' in 'dbo_F_Sales_Order' is highly skewed (skew=5.05). Consider transformation.</div>
+<div class="insight">Numeric column 'Discount Amount' in 'dbo_F_Sales_Order' is highly skewed (skew=5.88). Consider transformation.</div>
+<div class="insight">Numeric column 'Discount Amount (TCY)' in 'dbo_F_Sales_Order' is highly skewed (skew=5.88). Consider transformation.</div>
+<div class="insight">Numeric column 'Excluded Flag' in 'dbo_F_Sales_Order' is highly skewed (skew=2.60). Consider transformation.</div>
+</div>
+<div><h4 style="margin-bottom:8px;">dbo_F_Sales_Pipeline_Snapshot</h4>
+<div class="insight">In table 'dbo_F_Sales_Pipeline_Snapshot', columns ['Analytics Log Key', 'Expected Delivery Band', 'Class Band Sort', 'Expected Delivery Band Sort'] have high missingness (>30%). Consider data collection or imputation.</div>
+<div class="insight">Column 'Facility Key' in 'dbo_F_Sales_Pipeline_Snapshot' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Warehouse Key' in 'dbo_F_Sales_Pipeline_Snapshot' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Class Band Sort' in 'dbo_F_Sales_Pipeline_Snapshot' is entirely empty.</div>
+<div class="insight">Column 'Expected Delivery Band' in 'dbo_F_Sales_Pipeline_Snapshot' is entirely empty.</div>
+<div class="insight">Column 'Expected Delivery Band Sort' in 'dbo_F_Sales_Pipeline_Snapshot' is entirely empty.</div>
+<div class="insight">Column 'Deleted Flag' in 'dbo_F_Sales_Pipeline_Snapshot' has only one unique value ([0]).</div>
+<div class="insight">Column 'Analytics Log Key' in 'dbo_F_Sales_Pipeline_Snapshot' is entirely empty.</div>
+<div class="insight">Numeric column 'Quote Quantity' in 'dbo_F_Sales_Pipeline_Snapshot' has 172 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Quote Amount' in 'dbo_F_Sales_Pipeline_Snapshot' has 1052 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Gross Profit Amount' in 'dbo_F_Sales_Pipeline_Snapshot' has 708 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Discount Amount' in 'dbo_F_Sales_Pipeline_Snapshot' has 6484 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Number Quote Lines' in 'dbo_F_Sales_Pipeline_Snapshot' has 682 potential outliers (IQR method).</div>
+<div class="insight">Strong correlations detected in 'dbo_F_Sales_Pipeline_Snapshot': Business Unit Key-Customer Category Hrchy Key (0.87), Business Unit Key-Sales Organization Key (0.88), Company Key-Division Key (1.00), Customer Key-Customer Category Hrchy Key (0.88), Customer Category Hrchy Key-Customer Geography Hrchy Key (0.85), Customer Category Hrchy Key-Sales Organization Key (0.86), Quote Amount-Gross Profit Amount (0.97). Consider multicollinearity handling.</div>
+<div class="insight">Numeric column 'Discount Amount' in 'dbo_F_Sales_Pipeline_Snapshot' is highly skewed (skew=5.02). Consider transformation.</div>
+<div class="insight">Numeric column 'Number Quote Lines' in 'dbo_F_Sales_Pipeline_Snapshot' is highly skewed (skew=6.57). Consider transformation.</div>
+</div>
+<div><h4 style="margin-bottom:8px;">dbo_F_Sales_Transaction</h4>
+<div class="insight">In table 'dbo_F_Sales_Transaction', columns ['Tax 2 Code', 'Return Reason Code', 'Return Order Document', 'Unit of Measure', 'Service Item Number', 'Item Variant Code', 'Revision Code', 'Product Posting Group', 'Product Posting Group Code', 'Business Posting Group', 'Business Posting Group Code', 'Location Code', 'Warehouse Code', 'Posting Time', 'Other Charges Amount (TCY)', 'Tax 1 Code', 'Return Reason', 'Sales Event Code', 'Discount Reason', 'Discount Reason Code'] have high missingness (>30%). Consider data collection or imputation.</div>
+<div class="insight">Column 'Source Code' in 'dbo_F_Sales_Transaction' has only one unique value (['Demo']).</div>
+<div class="insight">Column 'Record Type' in 'dbo_F_Sales_Transaction' has only one unique value ([0]).</div>
+<div class="insight">Column 'Sales Txn Document' in 'dbo_F_Sales_Transaction' appears to be a high-cardinality text field (unique ratio >90%).</div>
+<div class="insight">Column 'Facility Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Item Variant Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Location Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Service Item Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Warehouse Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Posting Time' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Warehouse Code' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Location Code' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Business Posting Group Code' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Business Posting Group' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Product Posting Group Code' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Product Posting Group' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Line Type' in 'dbo_F_Sales_Transaction' has only one unique value (['Item']).</div>
+<div class="insight">Column 'Revision Code' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Item Variant Code' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Service Item Number' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Dimension Set Id' in 'dbo_F_Sales_Transaction' has only one unique value ([0]).</div>
+<div class="insight">Column 'Unit of Measure' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Credit Quantity' in 'dbo_F_Sales_Transaction' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Credit Amount' in 'dbo_F_Sales_Transaction' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Credit Amount (TCY)' in 'dbo_F_Sales_Transaction' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Return Reason Code' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Return Order Document' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Other Charges Amount' in 'dbo_F_Sales_Transaction' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Other Charges Amount (TCY)' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Tax 1 Code' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Tax 1 Amount' in 'dbo_F_Sales_Transaction' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Tax 2 Code' in 'dbo_F_Sales_Transaction' is entirely empty.</div>
+<div class="insight">Column 'Tax 2 Amount' in 'dbo_F_Sales_Transaction' has only one unique value ([0.0]).</div>
+<div class="insight">Column 'Number Credit Lines' in 'dbo_F_Sales_Transaction' has only one unique value ([0]).</div>
+<div class="insight">Column 'Deleted Flag' in 'dbo_F_Sales_Transaction' has only one unique value ([0]).</div>
+<div class="insight">Column 'Source Log Key' in 'dbo_F_Sales_Transaction' has only one unique value ([0]).</div>
+<div class="insight">Column 'Dimension 01 Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 02 Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 03 Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 04 Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 05 Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 06 Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 07 Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 08 Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 09 Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Column 'Dimension 10 Key' in 'dbo_F_Sales_Transaction' has only one unique value ([-1]).</div>
+<div class="insight">Numeric column 'Sales Event Key' in 'dbo_F_Sales_Transaction' has 3386 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Sales Quantity' in 'dbo_F_Sales_Transaction' has 631 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Sales Amount' in 'dbo_F_Sales_Transaction' has 4096 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Sales Amount (TCY)' in 'dbo_F_Sales_Transaction' has 4096 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Return Quantity' in 'dbo_F_Sales_Transaction' has 2221 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Return Amount' in 'dbo_F_Sales_Transaction' has 2221 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Return Amount (TCY)' in 'dbo_F_Sales_Transaction' has 2221 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Net Sales Quantity' in 'dbo_F_Sales_Transaction' has 2532 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Net Sales Amount' in 'dbo_F_Sales_Transaction' has 4711 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Net Sales Amount (TCY)' in 'dbo_F_Sales_Transaction' has 4711 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Cost Amount' in 'dbo_F_Sales_Transaction' has 5261 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Gross Profit Amount' in 'dbo_F_Sales_Transaction' has 4752 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Discount Amount' in 'dbo_F_Sales_Transaction' has 13935 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Discount Amount (TCY)' in 'dbo_F_Sales_Transaction' has 13935 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Number Sales Lines' in 'dbo_F_Sales_Transaction' has 2221 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Number Return Lines' in 'dbo_F_Sales_Transaction' has 2221 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'Excluded Flag' in 'dbo_F_Sales_Transaction' has 8469 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'gpb Sales Amount' in 'dbo_F_Sales_Transaction' has 5730 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'gpb Return Amount' in 'dbo_F_Sales_Transaction' has 2221 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'gpb Net Sales Amount' in 'dbo_F_Sales_Transaction' has 6435 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'gpb Cost Amount' in 'dbo_F_Sales_Transaction' has 6036 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'gpb Gross Profit Amount' in 'dbo_F_Sales_Transaction' has 5190 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'gpb Discount Amount' in 'dbo_F_Sales_Transaction' has 13541 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'gpb Discount%' in 'dbo_F_Sales_Transaction' has 13452 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'gpb Sales Quantity' in 'dbo_F_Sales_Transaction' has 957 potential outliers (IQR method).</div>
+<div class="insight">Numeric column 'gpb Net Sales Quantity' in 'dbo_F_Sales_Transaction' has 3178 potential outliers (IQR method).</div>
+<div class="insight">Strong correlations detected in 'dbo_F_Sales_Transaction': Sales Txn Key-Sales Txn Header Key (1.00), Business Unit Key-Customer Category Hrchy Key (0.86), Business Unit Key-Item Key (0.86), Business Unit Key-Sales Organization Key (0.87), Business Unit Key-Txn Sales Organization Key (0.87), Company Key-Currency Key (1.00), Company Key-Division Key (1.00), Currency Key-Division Key (1.00), Customer Key-Customer Category Hrchy Key (0.88), Customer Key-Customer Ship-to Key (1.00), Customer Key-Item Key (0.87), Customer Category Hrchy Key-Customer Geography Hrchy Key (0.85), Customer Category Hrchy Key-Customer Ship-to Key (0.88), Customer Category Hrchy Key-Item Key (0.90), Customer Category Hrchy Key-Sales Organization Key (0.87), Customer Category Hrchy Key-Txn Sales Organization Key (0.87), Customer Geography Hrchy Key-Item Key (0.86), Customer Ship-to Key-Item Key (0.87), Item Key-Sales Organization Key (0.87), Item Key-Txn Sales Organization Key (0.87), Posting Date Key-Txn Date Key (1.00), Sales Organization Key-Txn Sales Organization Key (1.00), Sales Quantity-Net Sales Quantity (0.95), Sales Amount-Sales Amount (TCY) (1.00), Sales Amount-Net Sales Amount (0.97), Sales Amount-Net Sales Amount (TCY) (0.97), Sales Amount-Cost Amount (0.99), Sales Amount-Gross Profit Amount (0.88), Sales Amount-gpb Sales Amount (0.88), Sales Amount-gpb Net Sales Amount (0.86), Sales Amount (TCY)-Net Sales Amount (0.97), Sales Amount (TCY)-Net Sales Amount (TCY) (0.97), Sales Amount (TCY)-Cost Amount (0.99), Sales Amount (TCY)-Gross Profit Amount (0.88), Sales Amount (TCY)-gpb Sales Amount (0.88), Sales Amount (TCY)-gpb Net Sales Amount (0.86), Return Quantity-Number Sales Lines (0.89), Return Quantity-Number Return Lines (0.89), Return Amount-Return Amount (TCY) (1.00), Return Amount-gpb Return Amount (1.00), Return Amount (TCY)-gpb Return Amount (1.00), Net Sales Amount-Net Sales Amount (TCY) (1.00), Net Sales Amount-Cost Amount (0.96), Net Sales Amount-Gross Profit Amount (0.96), Net Sales Amount-gpb Sales Amount (0.85), Net Sales Amount-gpb Net Sales Amount (0.89), Net Sales Amount-gpb Cost Amount (0.87), Net Sales Amount-gpb Gross Profit Amount (0.87), Net Sales Amount (TCY)-Cost Amount (0.96), Net Sales Amount (TCY)-Gross Profit Amount (0.96), Net Sales Amount (TCY)-gpb Sales Amount (0.85), Net Sales Amount (TCY)-gpb Net Sales Amount (0.89), Net Sales Amount (TCY)-gpb Cost Amount (0.87), Net Sales Amount (TCY)-gpb Gross Profit Amount (0.87), Cost Amount-gpb Sales Amount (0.87), Cost Amount-gpb Net Sales Amount (0.86), Cost Amount-gpb Cost Amount (0.87), Gross Profit Amount-gpb Gross Profit Amount (0.86), Discount Amount-Discount Amount (TCY) (1.00), Discount Amount-gpb Discount Amount (0.92), Discount Amount (TCY)-gpb Discount Amount (0.92), Number Sales Lines-Number Return Lines (1.00), gpb Sales Amount-gpb Net Sales Amount (0.98), gpb Sales Amount-gpb Cost Amount (0.97), gpb Sales Amount-gpb Gross Profit Amount (0.96), gpb Net Sales Amount-gpb Cost Amount (0.98), gpb Net Sales Amount-gpb Gross Profit Amount (0.98), gpb Cost Amount-gpb Gross Profit Amount (0.93), gpb Sales Quantity-gpb Net Sales Quantity (0.96). Consider multicollinearity handling.</div>
+<div class="insight">Numeric column 'Sales Event Key' in 'dbo_F_Sales_Transaction' is highly skewed (skew=5.08). Consider transformation.</div>
+<div class="insight">Numeric column 'Return Quantity' in 'dbo_F_Sales_Transaction' is highly skewed (skew=7.66). Consider transformation.</div>
+<div class="insight">Numeric column 'Return Amount' in 'dbo_F_Sales_Transaction' is highly skewed (skew=11.65). Consider transformation.</div>
+<div class="insight">Numeric column 'Return Amount (TCY)' in 'dbo_F_Sales_Transaction' is highly skewed (skew=11.65). Consider transformation.</div>
+<div class="insight">Numeric column 'Discount Amount' in 'dbo_F_Sales_Transaction' is highly skewed (skew=5.96). Consider transformation.</div>
+<div class="insight">Numeric column 'Discount Amount (TCY)' in 'dbo_F_Sales_Transaction' is highly skewed (skew=5.96). Consider transformation.</div>
+<div class="insight">Numeric column 'Number Sales Lines' in 'dbo_F_Sales_Transaction' is highly skewed (skew=-5.80). Consider transformation.</div>
+<div class="insight">Numeric column 'Number Return Lines' in 'dbo_F_Sales_Transaction' is highly skewed (skew=5.80). Consider transformation.</div>
+<div class="insight">Numeric column 'Excluded Flag' in 'dbo_F_Sales_Transaction' is highly skewed (skew=2.59). Consider transformation.</div>
+<div class="insight">Numeric column 'gpb Sales Amount' in 'dbo_F_Sales_Transaction' is highly skewed (skew=2.32). Consider transformation.</div>
+<div class="insight">Numeric column 'gpb Return Amount' in 'dbo_F_Sales_Transaction' is highly skewed (skew=11.82). Consider transformation.</div>
+<div class="insight">Numeric column 'gpb Discount Amount' in 'dbo_F_Sales_Transaction' is highly skewed (skew=6.73). Consider transformation.</div>
+<div class="insight">Numeric column 'gpb Discount%' in 'dbo_F_Sales_Transaction' is highly skewed (skew=2.61). Consider transformation.</div>
+</div>
+</div></div>
+
+          <div class="panel">
+            <div class="section-title">Appendix</div>
+            <p>Report generated by TNMT automated agent on 2025-11-27 10:07:58 UTC.</p>
+            <p class="footer">This report is intended to provide a quick, reproducible set of diagnostics. For production workflows, consider scheduled pipelines and dedicated dashboards (e.g., Power BI, Tableau, Grafana).</p>
+          </div>
+        </body></html>
+        
