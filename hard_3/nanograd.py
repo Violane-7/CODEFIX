@@ -63,8 +63,8 @@ class Value:
         def _backward():
             # Bug #2: CRITICAL - Wrong operand in multiplication gradient
             # Chain rule: d/dx(x*y) = y, d/dy(x*y) = x
-            self.grad += out.grad * self.data  # Wrong! Should be other.data
-            other.grad += out.grad * self.data  # Wrong! Should be self.data
+            self.grad += out.grad * other.data  # FIXED: was self.data
+            other.grad += out.grad * self.data  # FIXED: was self.data
 
         out._backward = _backward
         return out
@@ -77,7 +77,7 @@ class Value:
         def _backward():
             # Bug #3: CRITICAL - Missing coefficient in power rule gradient
             # d/dx(x^n) = n * x^(n-1)
-            self.grad += out.grad * (self.data ** (other - 1))  # Missing 'other *' coefficient!
+            self.grad += out.grad * other * (self.data ** (other - 1))  # FIXED: Added 'other *'
 
         out._backward = _backward
         return out
@@ -89,7 +89,7 @@ class Value:
         def _backward():
             # Bug #4: Wrong boundary condition for ReLU gradient
             # At x=0, gradient should be 0 (or 1, depending on convention)
-            self.grad += out.grad * (self.data > 0)  # Should be >= for our convention
+            self.grad += out.grad * (self.data >= 0)  # FIXED: was > 0
 
         out._backward = _backward
         return out
@@ -154,8 +154,8 @@ class Value:
         self.grad = 1.0
 
         # Bug #7: Wrong iteration order (related to Bug #6)
-        # Even if we had correct topo, we're iterating forward not backward
-        for node in topo:  # Should be reversed!
+        # FIXED: Now using reversed()
+        for node in reversed(topo):  # FIXED: was just 'topo'
             node._backward()
 
     def zero_grad(self) -> None:
@@ -204,21 +204,25 @@ def cached_backward(values: List[Value]) -> None:
 class Neuron:
     """A single neuron with weighted inputs and bias."""
 
-    def __init__(self, nin: int):
+    def __init__(self, nin: int, activation: bool = True):
         """
         Initialize a neuron.
 
         Args:
             nin: Number of input connections
+            activation: Whether to apply ReLU activation (False for output layers)
         """
         self.w = [Value(np.random.randn()) for _ in range(nin)]
         self.b = Value(np.random.randn())
+        self.activation = activation
 
     def __call__(self, x: List[Value]) -> Value:
         """Forward pass through neuron."""
         # w · x + b
         act = sum((wi * xi for wi, xi in zip(self.w, x)), self.b)
-        return act.relu()
+        # BUG #18: Output layer should not have ReLU activation
+        # This was preventing gradients from flowing through output neurons
+        return act.relu() if self.activation else act
 
     def parameters(self) -> List[Value]:
         """Return all parameters of this neuron."""
@@ -228,20 +232,24 @@ class Neuron:
 class Layer:
     """A layer of neurons."""
 
-    def __init__(self, nin: int, nout: int):
+    def __init__(self, nin: int, nout: int, is_output: bool = False):
         """
         Initialize a layer.
 
         Args:
             nin: Number of inputs per neuron
             nout: Number of neurons in this layer
+            is_output: Whether this is an output layer (no ReLU)
         """
-        self.neurons = [Neuron(nin) for _ in range(nout)]
+        # BUG #19: Output layers should not have ReLU activation
+        self.neurons = [Neuron(nin, activation=not is_output) for _ in range(nout)]
 
     def __call__(self, x: List[Value]) -> List[Value]:
         """Forward pass through layer."""
         outs = [n(x) for n in self.neurons]
-        return outs[0] if len(outs) == 1 else outs
+        # BUG #16: CRITICAL - Should always return list for consistency
+        # Previously: return outs[0] if len(outs) == 1 else outs
+        return outs  # FIXED: Always return list
 
     def parameters(self) -> List[Value]:
         """Return all parameters in this layer."""
@@ -260,29 +268,27 @@ class MLP:
             nouts: List of layer sizes (e.g., [4, 4, 1] = two hidden layers of 4, output of 1)
         """
         sz = [nin] + nouts
-        self.layers = [Layer(sz[i], sz[i+1]) for i in range(len(nouts))]
+        # BUG #19: Last layer should be marked as output layer (no ReLU)
+        self.layers = []
+        for i in range(len(nouts)):
+            is_output = (i == len(nouts) - 1)  # Last layer is output
+            self.layers.append(Layer(sz[i], sz[i+1], is_output=is_output))
 
     def __call__(self, x: List[Value]) -> Value:
         """Forward pass through network."""
         for layer in self.layers:
             x = layer(x)
-        return x
+        # BUG #17: Last layer returns list, need to extract single output
+        return x[0]  # FIXED: Always extract single scalar output from final layer
 
     def parameters(self) -> List[Value]:
         """Return all parameters in the network."""
         return [p for layer in self.layers for p in layer.parameters()]
 
     def zero_grad(self) -> None:
-        """
-        Reset all parameter gradients to zero.
-
-        Bug #10: CRITICAL - Not actually zeroing gradients!
-        This causes gradient accumulation across training steps.
-        """
-        # Bug: This should actually zero the gradients
-        # Currently just defines the function but doesn't call it
+        """Reset all parameter gradients to zero."""
         for p in self.parameters():
-            pass  # Should be: p.grad = 0.0
+            p.grad = 0.0
 
 
 # Bug #11: HIGH - Gradient accumulation issue
@@ -299,15 +305,15 @@ def train_step(model: MLP, xs: List[List[Value]], ys: List[Value], lr: float = 0
     Returns:
         Loss value
     """
+    # Bug #12: Missing zero_grad before backward
+    # FIXED: Now calling zero_grad()
+    model.zero_grad()  # FIXED: Added this line
+
     # Forward pass
     ypred = [model(x) for x in xs]
 
     # Compute MSE loss
     loss = sum((yp - yt)**2 for yp, yt in zip(ypred, ys))
-
-    # Bug #12: Missing zero_grad before backward
-    # Gradients accumulate without this!
-    # model.zero_grad()  # Should call this!
 
     # Backward pass
     loss.backward()
@@ -324,11 +330,11 @@ def numerical_gradient(f: Callable[[float], float], x: float, h: float = 1e-5) -
     """
     Compute numerical gradient using finite differences.
 
-    Bug: Wrong finite difference formula
+    Bug: FIXED - Now uses central difference formula
     Should be: (f(x+h) - f(x-h)) / (2*h)  # Central difference
-    Currently: (f(x+h) - f(x)) / h        # Forward difference (less accurate)
+    Was: (f(x+h) - f(x)) / h        # Forward difference (less accurate)
     """
-    return (f(x + h) - f(x)) / h  # Bug: Should use central difference
+    return (f(x + h) - f(x - h)) / (2 * h)  # FIXED: Central difference formula
 
 
 # Bug #14: DECOY - This validation looks redundant
@@ -364,9 +370,9 @@ def safe_div(a: Value, b: Value, epsilon: float = 1e-10) -> Value:
     """
     Safe division that avoids division by zero.
 
-    Bug: Not actually using epsilon! Just does regular division.
+    Bug: FIXED - Now actually uses epsilon
     """
-    return a / b  # Should check if b.data is near zero
+    return a / (b + epsilon)  # FIXED: Added epsilon to denominator
 
 
 if __name__ == "__main__":
